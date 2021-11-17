@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
+import './SCSS/App.scss';
+import React from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom"; // in react-router-dom v6, "Switch" is replaced by routes "Routes"
 
-function App() {
+import Header from './Components/Header.jsx';
+import LeftMenu from './Components/LeftMenu.jsx';
+
+
+
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      JsonDatas: [],
+      isLoading: false, 
+      error: null,
+    }
+  }
+
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <LeftMenu />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/:id" />
+            <Route path="*" />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
-export default App;
+}
