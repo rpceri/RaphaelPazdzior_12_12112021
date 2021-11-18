@@ -36,37 +36,37 @@ const USER_ACTIVITY = [
         userId: 12,
         sessions: [
             {
-                day: '2020-07-01',
+                day: '2022-07-01',
                 kilogram: 80,
                 calories: 240
             },
             {
-                day: '2020-07-02',
+                day: '2022-07-02',
                 kilogram: 80,
                 calories: 220
             },
             {
-                day: '2020-07-03',
+                day: '2022-07-03',
                 kilogram: 81,
                 calories: 280
             },
             {
-                day: '2020-07-04',
+                day: '2022-07-04',
                 kilogram: 81,
                 calories: 290
             },
             {
-                day: '2020-07-05',
+                day: '2022-07-05',
                 kilogram: 80,
                 calories: 160
             },
             {
-                day: '2020-07-06',
+                day: '2022-07-06',
                 kilogram: 78,
                 calories: 162
             },
             {
-                day: '2020-07-07',
+                day: '2022-07-07',
                 kilogram: 76,
                 calories: 390
             }
@@ -76,37 +76,37 @@ const USER_ACTIVITY = [
         userId: 18,
         sessions: [
             {
-                day: '2020-07-01',
+                day: '2022-07-01',
                 kilogram: 70,
                 calories: 240
             },
             {
-                day: '2020-07-02',
+                day: '2022-07-02',
                 kilogram: 69,
                 calories: 220
             },
             {
-                day: '2020-07-03',
+                day: '2022-07-03',
                 kilogram: 70,
                 calories: 280
             },
             {
-                day: '2020-07-04',
+                day: '2022-07-04',
                 kilogram: 70,
                 calories: 500
             },
             {
-                day: '2020-07-05',
+                day: '2022-07-05',
                 kilogram: 69,
                 calories: 160
             },
             {
-                day: '2020-07-06',
+                day: '2022-07-06',
                 kilogram: 69,
                 calories: 162
             },
             {
-                day: '2020-07-07',
+                day: '2022-07-07',
                 kilogram: 69,
                 calories: 390
             }
@@ -121,31 +121,31 @@ const USER_AVERAGE_SESSIONS = [
         sessions: [
             {
                 day: 1,
-                sessionLength: 30
+                sessionLength: 10
             },
             {
                 day: 2,
-                sessionLength: 23
+                sessionLength: 20
             },
             {
                 day: 3,
-                sessionLength: 45
+                sessionLength: 30
             },
             {
                 day: 4,
-                sessionLength: 50
+                sessionLength: 40
             },
             {
                 day: 5,
-                sessionLength: 0
+                sessionLength: 50
             },
             {
                 day: 6,
-                sessionLength: 0
+                sessionLength: 60
             },
             {
                 day: 7,
-                sessionLength: 60
+                sessionLength: 70
             }
         ]
     },
@@ -198,23 +198,23 @@ const USER_PERFORMANCE = [
         },
         data: [
             {
-                value: 80,
+                value: 100,
                 kind: 1
             },
             {
-                value: 120,
+                value: 101,
                 kind: 2
             },
             {
-                value: 140,
+                value: 102,
                 kind: 3
             },
             {
-                value: 50,
+                value: 103,
                 kind: 4
             },
             {
-                value: 200,
+                value: 104,
                 kind: 5
             },
             {
