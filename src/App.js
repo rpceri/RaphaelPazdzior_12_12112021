@@ -14,7 +14,7 @@ export default function App() {
       <LeftMenu />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/user/:id" element={<MainBloc />}></Route> {/* in V6, you can't use the component prop anymore. It was replaced in favor of element:*/}
+          <Route exact path="/user/:idUser" element={<MainBloc />}></Route> {/* in V6, you can't use the component prop anymore. It was replaced in favor of element:*/}
           <Route />
         </Routes>
       </BrowserRouter>

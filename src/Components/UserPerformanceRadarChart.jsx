@@ -1,13 +1,15 @@
 /**
- * return template with user's performance radar chart, see https://recharts.org/
- * 
-  */
+ * return template with user's performance radar chart
+ * used in MainBloc.jsx
+ * @param { array } props.datasUserPerformance
+ * @return { HTMLElement }
+ */
  
  import PropTypes from 'prop-types';
 
 
  export default function UserPerformanceRadarChart(props) {
-    const perfs = props.data;
+    const perfs = props.datasUserPerformance;
     //console.log(perfs)
   
     return (<div> perfs :
@@ -20,5 +22,5 @@
 }
 
 UserPerformanceRadarChart.propTypes = {
-    data: PropTypes.array
+    datasUserPerformance: PropTypes.array
 };

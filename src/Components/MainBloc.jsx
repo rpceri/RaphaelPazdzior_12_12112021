@@ -1,19 +1,25 @@
 /**
- * display user datas
- * 
+ * return html code that display user datas
+ * used in App.js
+ * required : { int } useParams().idUser
+ * @return { HTMLElement }
  */
+ 
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { GetUserDatas, GetUserActivity, GetUserAverageSessions, GetUserPerformance} from "../Services/GetUserDatas.js";
 
 import UserInfo from "./UserInfo.jsx";
 import UserActivityBarChart from "./UserActivityBarChart.jsx";
 import UserAverageSessionsLineChart from "./UserAverageSessionsLineChart.jsx";
 import UserPerformanceRadarChart from "./UserPerformanceRadarChart.jsx";
+import KeyDatas from "./KeyDatas.jsx";
+
 
  export default function MainBloc() {
-    const idParams = parseInt(useParams().id); // recuperation de l'id passé en paramètre
+    const idParams = parseInt(useParams().idUser); //store id passed in parameters
 
     const [datasUserBase, setDatasUserBase] = useState([]); // allDatas = state, useState=hook, renvoie une paire de val : l’état actuel et une fct pour le modifier 
     const [datasActivity, setDatasActivity] = useState([]);
@@ -26,11 +32,11 @@ import UserPerformanceRadarChart from "./UserPerformanceRadarChart.jsx";
 
         GetUserDatas(idParams)
             .then(returnedDatas => {
-                    setDatasUserBase(returnedDatas); 
+                setDatasUserBase(returnedDatas); 
             })
         GetUserActivity(idParams)
             .then(returnedDatas => {
-                    setDatasActivity(returnedDatas); 
+                setDatasActivity(returnedDatas); 
             })
          GetUserAverageSessions(idParams)
             .then(returnedDatas => {
@@ -47,19 +53,21 @@ import UserPerformanceRadarChart from "./UserPerformanceRadarChart.jsx";
 
     if(datasUserBase.userInfos !== undefined ) {return (
         <section className="user-page">
-            <UserInfo data={datasUserBase.userInfos.firstName} />
+            <UserInfo firstName={datasUserBase.userInfos.firstName} />
             <div className="user-page__graph">
                 <div className="user-page__graph__left">
-                    <UserActivityBarChart data={datasActivity} />
+                    <UserActivityBarChart datasActivity={datasActivity} />
                     <div className="user-page__graph__left__bottom">
-                        <UserAverageSessionsLineChart data={datasAverageSessions} />
-                        <UserPerformanceRadarChart data={datasUserPerformance} />
+                        <UserAverageSessionsLineChart datasAverageSessions={datasAverageSessions} />
+                        <UserPerformanceRadarChart datasUserPerformance={datasUserPerformance} />
                     </div>
                 </div>
-                
+                <div className="user-page__graph__right">
+                    <KeyDatas keyData={datasUserBase.keyData} />
+                </div>
             </div>
         </section> 
     )
-    } else return (<div>op</div>)
+    } else return (<div>No datats</div>)
 }
 

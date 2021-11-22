@@ -1,13 +1,15 @@
 /**
- * return template with user's duration session chart, see https://recharts.org/
- * 
-  */
+ * return template with user's duration session chart
+ * used in MainBloc.jsx
+ * @param { array } props.datasAverageSessions
+ * @return { HTMLElement }
+ */
  
 import PropTypes from 'prop-types';
 
 
  export default function UserAverageSessionsLineChart(props) {
-    const sessions = props.data;
+    const sessions = props.datasAverageSessions;
     //console.log(sessions)
   
     return (<div>
@@ -22,5 +24,5 @@ import PropTypes from 'prop-types';
 }
 
 UserAverageSessionsLineChart.propTypes = {
-    data: PropTypes.array
+    datasAverageSessions: PropTypes.array
 };

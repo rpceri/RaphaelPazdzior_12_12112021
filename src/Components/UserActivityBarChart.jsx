@@ -1,14 +1,16 @@
 /**
- * return template with user's activity chart, see https://recharts.org/
- * 
-  */
+ * return template with user's activity chart
+ * used in MainBloc.jsx
+ * @param { array } props.datasActivity
+ * @return { HTMLElement }
+ */
  
 
 import PropTypes from 'prop-types';
 
 
 export default function UserActivityBarChart(props) {
-    const sessions = props.data;
+    const sessions = props.datasActivity;
     //console.log(sessions)
   
     return (<div>
@@ -23,6 +25,6 @@ export default function UserActivityBarChart(props) {
 }
 
 UserActivityBarChart.propTypes = {
-    data: PropTypes.array
+    datasActivity: PropTypes.array
 };
 
