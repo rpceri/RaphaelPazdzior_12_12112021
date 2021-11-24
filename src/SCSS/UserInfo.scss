@@ -16,11 +16,45 @@
             margin-top: 1.5rem;
         }
     }
+
+    &__graph {
+        height: 55rem;
+        display: flex;
+        &__left {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+
+            /// ACTIVITY CHART __graph__left__activity-chart
+            &__activity-chart {
+                height: 55%;
+                margin-bottom: 2rem;
+                margin-right: 2.5%;
+                background-color: #fbfbfb;
+                position: relative;
+                border-radius: 5px;
+
+
+                &__title {
+                    color: #000;
+                    position: absolute;
+                    top: 3rem;
+                    left: 4rem;
+                    font-size: 1.2rem;   
+                }
+            }
+
+        }
+        &__right {
+            height: 53rem;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+
 }
-
-
-
-
 
 
 
