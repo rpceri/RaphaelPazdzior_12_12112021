@@ -1,0 +1,35 @@
+.user-page__graph__right__keyData {
+    background-color: #fbfbfb;
+    height: 25%;
+    max-width: 30em;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 3rem 0;
+
+    & .icon {
+        width: 5.5rem;
+        height: 5.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        margin: 2rem 2rem;
+    }
+
+    &__Calories {background-color: #fbeaea;}
+    &__Proteines {background-color: #e9f4fb;}
+    &__Glucides {background-color: #fbf6e5;}
+    &__Lipides {background-color: #fbeaef;}
+
+    &__value {
+        font-weight: bold;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    &__name {
+        font-weight: 500;
+        color: grey;
+    }
+}

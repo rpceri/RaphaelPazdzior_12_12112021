@@ -1,13 +1,14 @@
 /**
  * return template with user's activity chart
  * used in MainBloc.jsx
+ * tmp comment : help on recharts : https://www.geeksforgeeks.org/create-a-radar-chart-using-recharts-in-reactjs/
  * @param { array } props.datasActivity
  * @return { HTMLElement }
  */
  
 
 import PropTypes from 'prop-types';
-
+import { BarChart, Bar } from 'recharts'
 
 export default function UserActivityBarChart(props) {
     const sessions = props.datasActivity;
@@ -21,6 +22,12 @@ export default function UserActivityBarChart(props) {
                         {session.day} : {session.kilogram}
                     </li>
                 ))}
+          <BarChart data={sessions}>
+            <Bar
+              yAxisId="kilo"
+              dataKey="kilogram"
+            />
+           </BarChart>
         </div>)
 }
 

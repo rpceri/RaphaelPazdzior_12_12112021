@@ -9,13 +9,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { GetUserDatas, GetUserActivity, GetUserAverageSessions, GetUserPerformance} from "../Services/GetUserDatas.js";
+import { GetUserMainDatas, GetUserActivity, GetUserAverageSessions, GetUserPerformance} from "../Services/GetUserDatas.js";
 
 import UserInfo from "./UserInfo.jsx";
 import UserActivityBarChart from "./UserActivityBarChart.jsx";
 import UserAverageSessionsLineChart from "./UserAverageSessionsLineChart.jsx";
 import UserPerformanceRadarChart from "./UserPerformanceRadarChart.jsx";
-import KeyDatas from "./KeyDatas.jsx";
+import UserKeyDatas from "./UserKeyDatas.jsx";
 
 
  export default function MainBloc() {
@@ -26,14 +26,14 @@ import KeyDatas from "./KeyDatas.jsx";
     const [datasAverageSessions, setDatasAverageSessions] = useState([]);
     const [datasUserPerformance, setDatasUserPerformance] = useState([]);
 
-    console.log(`idParams : ${idParams}`)
+    //console.log(`idParams : ${idParams}`)
 
-    useEffect(() => { // nb : se déclenche après le rendu
-
-        GetUserDatas(idParams)
+    useEffect( () => { // nb : se déclenche après le rendu
+        //setDatasUserBase(await GetUserDatas(idParams))
+        GetUserMainDatas(idParams)
             .then(returnedDatas => {
                 setDatasUserBase(returnedDatas); 
-            })
+        })
         GetUserActivity(idParams)
             .then(returnedDatas => {
                 setDatasActivity(returnedDatas); 
@@ -63,7 +63,7 @@ import KeyDatas from "./KeyDatas.jsx";
                     </div>
                 </div>
                 <div className="user-page__graph__right">
-                    <KeyDatas keyData={datasUserBase.keyData} />
+                    <UserKeyDatas keyData={datasUserBase.keyData} />
                 </div>
             </div>
         </section> 
