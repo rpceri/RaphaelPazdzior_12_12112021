@@ -28,7 +28,7 @@ export default function UserActivityBarChart(props) {
     
     return <article className="user-page__graph__left__activity-chart">
         <h2 className="user-page__graph__left__activity-chart__title">Activité quotidienne</h2>
-            <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={sessions}
               margin={{
@@ -41,15 +41,16 @@ export default function UserActivityBarChart(props) {
               width={850} height={250}
             > {/*  width={850} heigh : no effect when ResponsiveContainerused */ }
 
-            <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* strokeDasharray  pattern of dashes and gaps used to paint the lines of the grid = lignes du fond dans graph */ }
-              <XAxis
+                <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* strokeDasharray  pattern of dashes and gaps used to paint the lines of the grid = lignes du fond dans graph */ }
+
+                <XAxis
                 dataKey="day"
                 tickLine={false} 
                 tick={{ fontSize: 12, strokeWidth: 0.5, stroke: '#C4C4C4' }}
                 dy={15}
-              />{/* tickLine = marqueur juste on top of the tick (tick = caption) */ }
+                />{/* tickLine = marqueur juste on top of the tick (tick = caption) */ }
 
-              <YAxis
+                <YAxis
                 yAxisId="kiloBar"
                 orientation="right"
                 interval="number"
@@ -59,35 +60,36 @@ export default function UserActivityBarChart(props) {
                 hide={false}
                 tick={{ fontSize: 12, strokeWidth: 0.5, stroke: '#C4C4C4' }}
                 domain={[minKilo, maxKilo]}
-              />
-              <YAxis
+                />
+                <YAxis
                 yAxisId="calBar"
                 hide={true}
                 domain={[minCalories, maxCalories]}
-              /> {/* hide={true} becaus figma no show this info */ }
+                /> {/* hide={true} becaus figma no show this info */ }
 
-            <Tooltip
-              cursor={{ fill: "#C4C4C4" }}
-            />   {/* fill : fond de la zone */} 
-  
-            <Legend verticalAlign="top" hei ght={36}
-            /> {/** could be perosnalised, see https://recharts.org/en-US/api/Legend */} 
-              <Bar
-                 name="Poids (Kg)"
-                yAxisId="kiloBar"
-                dataKey="kilogram"
-                radius={[50, 50, 0, 0]}
-                fill="#000"
-              />
-              <Bar
-                 name="Calories brûlées"
-                yAxisId="calBar"
-                dataKey="calories"
-                fill="#E60000"
-                radius={[50, 50, 0, 0]}
-              />
+                <Tooltip
+                cursor={{ fill: "#C4C4C4" }}
+                />   {/* fill : fond de la zone */} 
+    
+                <Legend verticalAlign="top" hei ght={36}
+                /> {/** could be perosnalised, see https://recharts.org/en-US/api/Legend */} 
+
+                <Bar
+                    name="Poids (Kg)"
+                    yAxisId="kiloBar"
+                    dataKey="kilogram"
+                    radius={[50, 50, 0, 0]}
+                    fill="#000"
+                />
+                <Bar
+                    name="Calories brûlées"
+                    yAxisId="calBar"
+                    dataKey="calories"
+                    fill="#E60000"
+                    radius={[50, 50, 0, 0]}
+                />
           </BarChart>
-          </ResponsiveContainer>
+        </ResponsiveContainer>
       </article>
 }
 

@@ -25,7 +25,7 @@
             display: flex;
             flex-direction: column;
 
-            /// ACTIVITY CHART __graph__left__activity-chart
+            // ACTIVITY CHART user-page__graph__left__activity-chart
             &__activity-chart {
                 height: 55%;
                 margin-bottom: 2rem;
@@ -43,7 +43,27 @@
                     font-size: 1.2rem;   
                 }
             }
+            // USER_AVERAGE_SESSIONS user-page__graph__left__bottom
+            &__bottom {
+                height: 39%;
+                display: flex;
+                //UserAverageSessionsLineChart
+                &__User-Average-Sessions-LineChart {
+                    position: relative;
+                    background-color: #ff0000;
+                    border-radius: 5px;
+                    width: 32%;
+                    margin: 1% 0 1% 0%;
+                   h2 {
+                        position: absolute;
+                        font-size: 1.5rem;
+                        top: 2rem;
+                        left: 2rem;
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+                }
 
+            }
         }
         &__right {
             height: 53rem;
@@ -58,3 +78,5 @@
 
 
 
+
+// fin de .user-page__graph__left__bottom

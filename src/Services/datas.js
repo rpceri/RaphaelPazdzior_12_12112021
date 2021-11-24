@@ -129,11 +129,11 @@ const USER_AVERAGE_SESSIONS = [
             },
             {
                 day: 3,
-                sessionLength: 30
+                sessionLength: 10
             },
             {
                 day: 4,
-                sessionLength: 40
+                sessionLength: 5
             },
             {
                 day: 5,
@@ -145,7 +145,7 @@ const USER_AVERAGE_SESSIONS = [
             },
             {
                 day: 7,
-                sessionLength: 70
+                sessionLength: 40
             }
         ]
     },
