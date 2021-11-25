@@ -52,11 +52,11 @@
                     position: relative;
                     background-color: #ff0000;
                     border-radius: 5px;
-                    width: 32%;
+                    width: 200px; /* 32% */
                     margin: 1% 0 1% 0%;
                    h2 {
                         position: absolute;
-                        font-size: 1.5rem;
+                        font-size: 1.3rem;
                         top: 2rem;
                         left: 2rem;
                         color: rgba(255, 255, 255, 0.6);
@@ -76,7 +76,10 @@
 
 }
 
+/* used in LineChartCustomTooltipContent */
+.line-chart-custom-tooltip-content {
+    background-color: #fbfbfb;
+    padding : 5px;
 
-
-
-// fin de .user-page__graph__left__bottom
+    p { font-weight: bold;}
+}
