@@ -42,6 +42,20 @@
                     left: 4rem;
                     font-size: 1.2rem;   
                 }
+                &__tooltip {
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 20px;
+                    p {
+                        text-align: center;
+                        padding: 1.8rem 1rem;
+                        color: #fff;
+                        font-weight: 500;
+                        margin : 10;
+                        padding : 5px;
+                        background-color: #e60000;
+                    }
+                }
             }
             // USER_AVERAGE_SESSIONS user-page__graph__left__bottom
             &__bottom {

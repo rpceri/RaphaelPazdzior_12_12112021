@@ -9,9 +9,10 @@
  *  1: Object { day: "2022-07-02", kilogram: 80, calories: 220 }
  */
  
-
 import PropTypes from 'prop-types';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+
+import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
 
 export default function UserActivityBarChart(props) {
     const sessions = props.datasActivity;
@@ -39,7 +40,7 @@ export default function UserActivityBarChart(props) {
               barGap={10}
               barSize={10}
               width={850} height={250}
-            > {/*  width={850} heigh : no effect when ResponsiveContainerused */ }
+            > {/*  width & heigh : no effect when ResponsiveContaineru sed */ }
 
                 <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* strokeDasharray  pattern of dashes and gaps used to paint the lines of the grid = lignes du fond dans graph */ }
 
@@ -68,10 +69,11 @@ export default function UserActivityBarChart(props) {
                 /> {/* hide={true} becaus figma no show this info */ }
 
                 <Tooltip
-                cursor={{ fill: "#C4C4C4" }}
+                cursor={{ fill: "#dfdfdf" }}
+                content={<BarChartCustomTooltip />}
                 />   {/* fill : fond de la zone */} 
     
-                <Legend verticalAlign="top" hei ght={36}
+                <Legend verticalAlign="top" height={36} align="right" iconType="circle"
                 /> {/** could be perosnalised, see https://recharts.org/en-US/api/Legend */} 
 
                 <Bar
@@ -82,7 +84,7 @@ export default function UserActivityBarChart(props) {
                     fill="#000"
                 />
                 <Bar
-                    name="Calories brûlées"
+                    name="Calories brûlées (Kcal)"
                     yAxisId="calBar"
                     dataKey="calories"
                     fill="#E60000"
