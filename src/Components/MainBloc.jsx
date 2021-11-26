@@ -15,6 +15,7 @@ import UserInfo from "./UserInfo.jsx";
 import UserActivityBarChart from "./UserActivityBarChart.jsx";
 import UserAverageSessionsLineChart from "./UserAverageSessionsLineChart.jsx";
 import UserPerformanceRadarChart from "./UserPerformanceRadarChart.jsx";
+import UserScoreRadialBarChart from "./UserScoreRadialBarChart.jsx";
 import UserKeyDatas from "./UserKeyDatas.jsx";
 
 
@@ -51,6 +52,10 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
 
     //console.log(datasAverageSessions)
 
+    let theScore = 0;
+    if(datasUserBase.todayScore !== undefined) theScore = datasUserBase.todayScore
+    //console.log(theScore)
+
     if(datasUserBase.userInfos !== undefined ) {return (
         <section className="user-page">
             <UserInfo firstName={datasUserBase.userInfos.firstName} />
@@ -60,6 +65,7 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
                     <div className="user-page__graph__left__bottom">
                         <UserAverageSessionsLineChart datasAverageSessions={datasAverageSessions} />
                         <UserPerformanceRadarChart datasUserPerformance={datasUserPerformance} />
+                        <UserScoreRadialBarChart theScore={theScore} />
                     </div>
                 </div>
                 <div className="user-page__graph__right">
