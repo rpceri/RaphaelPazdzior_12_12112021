@@ -1,16 +1,16 @@
-/**
- * return template with user's performance radar chart
- * used in MainBloc.jsx
- * @param { array } props.datasUserPerformance
+ import PropTypes from 'prop-types';
+ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
+
+ /**
+ * return html code with user's performance radar chart
+ * used in MainComponent.jsx
+ * @param { array.<{ value: Number, kind: Number }> } props.datasUserPerformance
  * @return { HTMLElement }
  * ​
  *  datasUserPerformance is an object array who contain for example
  * 0: Object { value: 100, kind: 1 }
 ​ * 1: Object { value: 101, kind: 2 }
  */
- 
- import PropTypes from 'prop-types';
- import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
 
  export default function UserPerformanceRadarChart(props) {
     //var perfsUnordered = props.datasUserPerformance // attention si on fait cela et qu'on modifie le 2d tableau, le 1er va aussi etre modifié

@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types'; // permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning si ça ne correspond pas
+
 /**
  * return template with userName
- * used in MainBloc.jsx
+ * used in MainComponent.jsx
  * @param { string } props.userName
  * @return { HTMLElement }
- */
-
-import PropTypes from 'prop-types'; // permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning si ça ne correspond pas
+*/
 
 export default function UserInfo(props) {
     if(props.firstName !== undefined ) {

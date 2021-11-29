@@ -1,11 +1,3 @@
-/**
- * return html code that display user datas
- * used in App.js
- * required : { int } useParams().idUser
- * @return { HTMLElement }
- */
- 
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -18,35 +10,48 @@ import UserPerformanceRadarChart from "./UserPerformanceRadarChart.jsx";
 import UserScoreRadialBarChart from "./UserScoreRadialBarChart.jsx";
 import UserKeyDatas from "./UserKeyDatas.jsx";
 
-
- export default function MainBloc() {
+/**
+ * return html code that display user datas
+ * used in App.js
+ * required : { int } useParams().idUser
+ * @return { HTMLElement }
+*/
+ 
+ export default function MainComponent() {
     const idParams = parseInt(useParams().idUser); //store id passed in parameters
 
     const [datasUserBase, setDatasUserBase] = useState([]); // allDatas = state, useState=hook, renvoie une paire de val : l’état actuel et une fct pour le modifier 
     const [datasActivity, setDatasActivity] = useState([]);
     const [datasAverageSessions, setDatasAverageSessions] = useState([]);
     const [datasUserPerformance, setDatasUserPerformance] = useState([]);
-
-    //console.log(`idParams : ${idParams}`)
+    console.log(`idParams : ${idParams}`)
 
     useEffect( () => { // nb : se déclenche après le rendu
         //setDatasUserBase(await GetUserDatas(idParams))
         GetUserMainDatas(idParams)
             .then(returnedDatas => {
                 setDatasUserBase(returnedDatas); 
-        })
+            })
+            .catch((e) => {
+                console.log("pb api1", e)      
+                }
+            )
+  
         GetUserActivity(idParams)
             .then(returnedDatas => {
                 setDatasActivity(returnedDatas); 
             })
+            .catch(err =>console.log("pb api", err))
          GetUserAverageSessions(idParams)
             .then(returnedDatas => {
                 setDatasAverageSessions(returnedDatas); 
             })
+            .catch(err =>console.log("pb api", err))
         GetUserPerformance(idParams)
             .then(returnedDatas => {
                 setDatasUserPerformance(returnedDatas); 
             })
+            .catch(err =>console.log("pb api", err))
 
     }, [idParams]); // idParams = tabelau de dépendances, pour préciser qu'on veut déclencher l'effet si idParams change
 
@@ -56,7 +61,7 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
     if(datasUserBase.todayScore !== undefined) theScore = datasUserBase.todayScore
     //console.log(theScore)
 
-    if(datasUserBase.userInfos !== undefined ) {return (
+    if(datasUserBase.userInfos !== undefined) {return (
         <section className="user-page">
             <UserInfo firstName={datasUserBase.userInfos.firstName} />
             <div className="user-page__graph">
@@ -74,6 +79,11 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
             </div>
         </section> 
     )
-    } else return (<div>No datats</div>)
+    } else {return (
+        <section className="user-page">
+            No datats
+        </section> 
+        )
+    }
 }
 

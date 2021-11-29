@@ -1,14 +1,15 @@
+
+import PropTypes from "prop-types";
+import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+
 /**
  * return template with user'sxcore radial bar chart
- * used in MainBloc.jsx
+ * used in MainComponent.jsx
  * @param { number } props.theScore
  * @return { HTMLElement }
  * ​
  *  theScore contains the data t display (float)
- */
-
-import PropTypes from "prop-types";
-import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+*/
 
  export default function UserScoreRadialBarChart(props) {
 

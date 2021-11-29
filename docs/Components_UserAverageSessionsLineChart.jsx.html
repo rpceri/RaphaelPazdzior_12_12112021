@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/UserAverageSessionsLineChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/UserAverageSessionsLineChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types';
+import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+
+import LineChartCustomTooltipContent from "./Linechart/LineChartCustomTooltipContent.jsx";
+import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCursor.jsx";
+
+/**
+ * return html code with user's duration session chart
+ * used in MainComponent.jsx
+
+ * @param { array.&lt;{ day: Number, sessionLength: Number }> } props.datasAverageSessions
+ * @return { HTMLElement }
+ * ​
+ *  datasAverageSessions is an object array who contain for example
+ *  0: Object { day: 1, sessionLength: 10 }
+ *  1: Object { day: 2, sessionLength: 20 }
+*/
+
+export default function UserAverageSessionsLineChart(props) {
+    const sessions = props.datasAverageSessions;
+
+    // replace  day by initial
+    let joursSeamine = {'1':'L', '2':'M', '3':'Me', '4':'J', '5':'V', '6':'S', '7':'D'}
+    for (let x = 0; x &lt; sessions.length; x++) {
+        let valJour = sessions[x].day // may be a number beetwenn  1 and 7
+        if(joursSeamine[valJour]) sessions[x].day = joursSeamine[valJour]
+    }
+    //console.log(sessions)
+    const arraySessionLength = sessions.map(el => el.sessionLength); // to keep sessionLength values only
+    //console.log(arraySessionLength)
+    const maxSessionLength = Math.max(...arraySessionLength);
+
+    return (&lt;div  className="user-page__graph__left__bottom__User-Average-Sessions-LineChart">
+                &lt;h2>Durée moyenne des&lt;br />sessions&lt;/h2>
+
+                {/*sessions.map((session) => (
+                    &lt;li key={ session.day }>
+                        {session.day} : {session.sessionLength}
+                    &lt;/li>
+                ))*/}
+
+                &lt;ResponsiveContainer width="100%" height="100%">
+                &lt;LineChart 
+                    data={sessions} 
+                    width={200} height={200} 
+                    margin={{ top: 60, right: 0, bottom: 0, left:0 }}>
+                    &lt;defs>
+                        {/** to drow the line like figma dégrédé */}
+                        &lt;linearGradient id="LineGraphEffect" x1="0%" y1="0%" x2="100%" y2="0%">
+                        &lt;stop offset="0%" stopColor="rgba(255, 255, 255, 0.33)" />
+                        &lt;stop offset="50%" stopColor="rgba(255, 255, 255, 0.66)" />
+                        &lt;stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
+                        &lt;/linearGradient>
+                    &lt;/defs>
+
+                    &lt;Tooltip
+                        content={&lt;LineChartCustomTooltipContent />}
+                        cursor={&lt;LineChartCustomTooltipCursor />}
+                    />
+                    &lt;XAxis
+                        dataKey={"day"}
+                        stroke="rgba(255, 255, 255, 0.5)"
+                        tick={{ fontSize: 12, strokeWidth: 0.1, stroke: 'white'  }}
+                        axisLine={false}
+                        tickLine={false}
+                        padding={{ left: 10, right: 10 }}
+                    />
+
+                    &lt;YAxis
+                        domain={[-10, maxSessionLength]}
+                        hide={true}
+                    />
+
+                    &lt;Line                  
+                    dataKey="sessionLength" 
+                    stroke="url(#LineGraphEffect)"
+                    type="monotone" 
+                    dot={false}
+
+                    activeDot={{
+                        stroke: "rgba(255, 255, 255, 0.40)",
+                        strokeWidth: 8,
+                        r: 5,
+                        fill: "#FFFFFF"
+                      }}
+                    /> {/* monotone pour arondi 
+                        r : diam du rond interne, strokeWidth : diam de l'ombre
+                        stroke="#FFFFFF"&lt;= nok car passe aussi le libellé du survol en blank */}
+
+                &lt;/LineChart>
+                &lt;/ResponsiveContainer>
+        &lt;/div>)
+}
+
+UserAverageSessionsLineChart.propTypes = {
+    datasAverageSessions: PropTypes.array
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li><li><a href="global.html#keyData">keyData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Nov 29 2021 22:06:19 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

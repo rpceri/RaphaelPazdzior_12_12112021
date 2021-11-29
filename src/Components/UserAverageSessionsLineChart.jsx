@@ -1,21 +1,22 @@
-/**
- * return template with user's duration session chart
- * used in MainBloc.jsx
- * @param { array } props.datasAverageSessions
- * @return { HTMLElement }
- * ​
- *  datasAverageSessions is an object array who contain for example
- *  0: Object { day: 1, sessionLength: 10 }
- *  1: Object { day: 2, sessionLength: 20 }
- */
- 
 import PropTypes from 'prop-types';
 import { LineChart, Line, Tooltip, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 import LineChartCustomTooltipContent from "./Linechart/LineChartCustomTooltipContent.jsx";
 import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCursor.jsx";
 
- export default function UserAverageSessionsLineChart(props) {
+/**
+ * return html code with user's duration session chart
+ * used in MainComponent.jsx
+
+ * @param { array.<{ day: Number, sessionLength: Number }> } props.datasAverageSessions
+ * @return { HTMLElement }
+ * ​
+ *  datasAverageSessions is an object array who contain for example
+ *  0: Object { day: 1, sessionLength: 10 }
+ *  1: Object { day: 2, sessionLength: 20 }
+*/
+
+export default function UserAverageSessionsLineChart(props) {
     const sessions = props.datasAverageSessions;
 
     // replace  day by initial

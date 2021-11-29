@@ -1,11 +1,11 @@
-/**
- * return template with key Datas
- * used in MainBloc.jsx
+ import PropTypes from 'prop-types'; // permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning si ça ne correspond pas
+
+ /**
+ * return html code with key Datas
+ * used in MainComponent.jsx
  * @param { string } props.keyDatas
  * @return { HTMLElement }
  */
-
- import PropTypes from 'prop-types'; // permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning si ça ne correspond pas
 
  export default function UserKeyDatas(props) {
      if(props.keyData !== undefined ) {
@@ -22,11 +22,11 @@
  }
 
  /**
- * return template with a single Key Data
- * used in MainBloc.jsx
- * @param { string } a label for the Data, also used in css
- * @param { string } the value of the data
- * @param { string } the name of picture ti display, with extension
+ * return html code with a single Key Data
+ * used in MainComponent.jsx
+ * @param { string } name A label for the Data, also used in css
+ * @param { string } value The value of the data
+ * @param { string } picture The name of picture ti display, with extension
  * @return { HTMLElement }
  */
 

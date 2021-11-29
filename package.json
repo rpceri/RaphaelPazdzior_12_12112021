@@ -6,19 +6,24 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "better-docs": "^2.3.2",
+    "js-doc": "^0.5.0",
+    "jsdoc": "^3.6.7",
     "node-sass": "5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "recharts": "^2.1.6",
+    "sphinx": "^0.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "set PORT=3006 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "eslintConfig": {
     "extends": [

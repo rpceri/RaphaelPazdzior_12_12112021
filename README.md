@@ -10,6 +10,19 @@ Project was inisialised whith Create React App
 - [Repository https://github.com/rpceri/RaphaelPazdzior_12_12112021)
 - [Figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1)
 
+## Technologies
+- JS
+- CSS 
+- React
+
+## Authors
+
+Our code squad : Raphael Pazdzior
+
+## Licensing
+
+This project was built under the Creative Commons licence.
+
 ## prerequisite | dependencies
 
 

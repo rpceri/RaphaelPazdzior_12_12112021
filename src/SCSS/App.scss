@@ -34,6 +34,16 @@ a {
     }
 }
 
+.info-page-introuvable {
+    height: 70rem;
+    color: #000;
+    margin-left: 9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
 @import '../SCSS/Header.scss';
 @import '../SCSS/LeftMenu.scss';
 @import '../SCSS/UserInfo.scss';

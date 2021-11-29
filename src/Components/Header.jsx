@@ -1,7 +1,7 @@
-/**
+ /**
  * Component for header with navigation.
- * 
-*/
+ */
+
 export default function Header() {
 
     return (<header className="header">
