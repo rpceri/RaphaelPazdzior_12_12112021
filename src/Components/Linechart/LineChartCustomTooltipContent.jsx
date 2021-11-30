@@ -1,11 +1,13 @@
 /**
  * return html code for LineChart tooltip 
+ 
+* @component
  * used in UserAverageSessionsLineChart.jsx
  * @return { HTMLElement }
  * ​
  */
 
-export default function LineChartCustomTooltipContent({ active, payload }) {
+function LineChartCustomTooltipContent({ active, payload }) {
     if (active && payload && payload.length) {
       return (
         <div className="line-chart-custom-tooltip-content">
@@ -16,3 +18,5 @@ export default function LineChartCustomTooltipContent({ active, payload }) {
   
     return null
   };
+
+  export default LineChartCustomTooltipContent

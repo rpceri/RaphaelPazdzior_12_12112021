@@ -4,6 +4,8 @@
  /**
  * return html code with user's performance radar chart
  * used in MainComponent.jsx
+ *
+ * @component
  * @param { array.<{ value: Number, kind: Number }> } props.datasUserPerformance
  * @return { HTMLElement }
  * ​
@@ -12,7 +14,7 @@
 ​ * 1: Object { value: 101, kind: 2 }
  */
 
- export default function UserPerformanceRadarChart(props) {
+function UserPerformanceRadarChart(props) {
     //var perfsUnordered = props.datasUserPerformance // attention si on fait cela et qu'on modifie le 2d tableau, le 1er va aussi etre modifié
     var perfsUnordered = JSON.parse(JSON.stringify(props.datasUserPerformance)) // BE VERY CARREFUL ATTENTION : copy an objet table shoud be like that, either, props.datasUserPerformance is also modified
 
@@ -55,4 +57,6 @@
 
 UserPerformanceRadarChart.propTypes = {
     datasUserPerformance: PropTypes.array
-};
+}
+
+export default UserPerformanceRadarChart

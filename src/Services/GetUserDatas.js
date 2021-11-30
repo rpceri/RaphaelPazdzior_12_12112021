@@ -18,7 +18,7 @@ console.log(`mokedDatas in 'GetUserDatas  : ${mokedDatas}`)
  * return USER_MAIN_DATA in an array
  * @param   {number} id user id
  * //@return  {array |"error"}     user datas in an array
- * @returns {Object}  
+ * @returns {Object}  user datas : id,  keyData  { calorieCount, proteinCount, carbohydrateCount, lipidCount }, todayScore, userInfos: Object { firstName, lastName, ag e}
  * @throws {Error}
  */
 
@@ -65,7 +65,7 @@ export async function GetUserDatasH(id) {
 /**
  * return USER_ACTIVITY datas in an array
  * @param   {number} id user id
- * @return  {array |"error"}     user datas in an array
+ * @return  {array } user datas in an array
  */
 
 export async function GetUserActivity(id) {
@@ -74,9 +74,7 @@ export async function GetUserActivity(id) {
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/activity`);
       const dataUser = await response.json();
-      //et surtout pas return await response.json().data;
-      //moins bien :
-      //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())     
+      //et surtout pas return await response.json().data;  
       return dataUser.data.sessions
     } 
     return  USER_ACTIVITY[0].sessions;
@@ -89,7 +87,7 @@ export async function GetUserActivity(id) {
 /**
  * return USER_AVERAGE_SESSIONS datas in an array
  * @param   {number} id user id
- * @return  {array |"error"}     user datas in an array
+ * @return  {array} user datas in an array
  */
 
 
@@ -100,8 +98,6 @@ export async function GetUserAverageSessions(id) { // ressemble a activity dans 
       const response = await fetch(`${apisUrl}/user/${id}/average-sessions`);
       const dataUser = await response.json();
       //et surtout pas return await response.json().data.sessions
-      //moins bien :
-      //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())     
       return dataUser.data.sessions
     } 
     return  USER_AVERAGE_SESSIONS[0].sessions;
@@ -114,7 +110,7 @@ export async function GetUserAverageSessions(id) { // ressemble a activity dans 
 /**
  * return USER_PERFORMANCE datas in an array
  * @param   {Integer} id user id
- * @return  {array |"error"}     user datas in an array
+ * @return  {array} user datas in an array
  */
 
 export async function GetUserPerformance(id) {
@@ -123,9 +119,7 @@ export async function GetUserPerformance(id) {
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/performance`);
       const dataUser = await response.json();
-      //et surtout pas return await response.json().data.data
-      //moins bien :
-      //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())     
+      //et surtout pas return await response.json().data.data  
       return dataUser.data.data
     } 
     return  USER_PERFORMANCE[0].data

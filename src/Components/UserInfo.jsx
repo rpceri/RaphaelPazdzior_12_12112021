@@ -2,12 +2,15 @@ import PropTypes from 'prop-types'; // permet de déclarer le type des props qui
 
 /**
  * return template with userName
+ *
+ * @component
+ * @example
  * used in MainComponent.jsx
  * @param { string } props.userName
  * @return { HTMLElement }
 */
 
-export default function UserInfo(props) {
+function UserInfo(props) {
     if(props.firstName !== undefined ) {
         const firstName = props.firstName;
         //console.log(`firstName is : ${firstName}`)
@@ -24,3 +27,5 @@ export default function UserInfo(props) {
 UserInfo.propTypes = {
     userName: PropTypes.string
 }
+
+export default UserInfo

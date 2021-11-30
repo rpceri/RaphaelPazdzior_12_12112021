@@ -1,9 +1,10 @@
  /**
  * Component for header with navigation.
+ *
+ * @component
  */
 
-export default function Header() {
-
+function Header() {
     return (<header className="header">
         <img src={`${process.env.PUBLIC_URL}/pictures/logo.png`} alt="SportSee" />
         <nav>
@@ -15,3 +16,4 @@ export default function Header() {
   </header>)
 }
 
+export default Header

@@ -12,12 +12,14 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
 
 /**
  * return html code that display user datas
+ *
+ * @component
  * used in App.js
  * required : { int } useParams().idUser
  * @return { HTMLElement }
 */
  
- export default function MainComponent() {
+function MainComponent() {
     const idParams = parseInt(useParams().idUser); //store id passed in parameters
 
     const [datasUserBase, setDatasUserBase] = useState([]); // allDatas = state, useState=hook, renvoie une paire de val : l’état actuel et une fct pour le modifier 
@@ -30,7 +32,8 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
         //setDatasUserBase(await GetUserDatas(idParams))
         GetUserMainDatas(idParams)
             .then(returnedDatas => {
-                setDatasUserBase(returnedDatas); 
+                setDatasUserBase(returnedDatas)
+                console.log(returnedDatas)
             })
             .catch((e) => {
                 console.log("pb api1", e)      
@@ -39,17 +42,22 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
   
         GetUserActivity(idParams)
             .then(returnedDatas => {
-                setDatasActivity(returnedDatas); 
+                setDatasActivity(returnedDatas);
+                console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
-         GetUserAverageSessions(idParams)
+
+        GetUserAverageSessions(idParams)
             .then(returnedDatas => {
-                setDatasAverageSessions(returnedDatas); 
+                setDatasAverageSessions(returnedDatas) 
+                console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
+
         GetUserPerformance(idParams)
             .then(returnedDatas => {
-                setDatasUserPerformance(returnedDatas); 
+                setDatasUserPerformance(returnedDatas)
+                console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
@@ -87,3 +95,4 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
     }
 }
 
+export default MainComponent

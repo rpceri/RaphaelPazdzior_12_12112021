@@ -6,8 +6,9 @@ import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCurs
 
 /**
  * return html code with user's duration session chart
+ *
+ * @component
  * used in MainComponent.jsx
-
  * @param { array.<{ day: Number, sessionLength: Number }> } props.datasAverageSessions
  * @return { HTMLElement }
  * ​
@@ -16,7 +17,7 @@ import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCurs
  *  1: Object { day: 2, sessionLength: 20 }
 */
 
-export default function UserAverageSessionsLineChart(props) {
+function UserAverageSessionsLineChart(props) {
     const sessions = props.datasAverageSessions;
 
     // replace  day by initial
@@ -95,3 +96,5 @@ export default function UserAverageSessionsLineChart(props) {
 UserAverageSessionsLineChart.propTypes = {
     datasAverageSessions: PropTypes.array
 };
+
+export default UserAverageSessionsLineChart

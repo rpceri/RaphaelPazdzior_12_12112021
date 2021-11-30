@@ -8,7 +8,7 @@ import MainComponent from './Components/MainComponent.jsx';
 import NotFound from './Components/NotFound.jsx';
 
 export default function App() {
-  console.log('App used')
+  //console.log('App used')
   return (
     <div className="App">
       <Header />
@@ -16,6 +16,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/user/:idUser" element={<MainComponent />}></Route> {/* in V6, you can't use the component prop anymore. It was replaced in favor of element */}
+          <Route exact path="/"></Route>
           <Route path="*" element={<NotFound />}></Route> {/* in V6, must put path="*, see https://reactrouter.com/docs/en/v6/getting-started/overview */}
         </Routes>
       </BrowserRouter>

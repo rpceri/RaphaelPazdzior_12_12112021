@@ -2,12 +2,14 @@
 
  /**
  * return html code with key Datas
+ *
+ * @component
  * used in MainComponent.jsx
  * @param { string } props.keyDatas
  * @return { HTMLElement }
  */
 
- export default function UserKeyDatas(props) {
+ function UserKeyDatas(props) {
      if(props.keyData !== undefined ) {
          return (        
              <> 
@@ -20,6 +22,12 @@
      }
      return (<div>Données en attente</div>)
  }
+
+ UserKeyDatas.propTypes = {
+    keyData: PropTypes.object
+ }
+
+ export default UserKeyDatas
 
  /**
  * return html code with a single Key Data
@@ -51,6 +59,3 @@ function keyData(name, value, picture) {
 }
 
  
- UserKeyDatas.propTypes = {
-    keyData: PropTypes.object
- }

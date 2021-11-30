@@ -5,6 +5,8 @@ import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
 
 /**
  * return html code with user's activity chart
+ *
+ * @component
  * used in MainComponent.jsx
  * tmp comment : help on recharts : https://www.geeksforgeeks.org/create-a-radar-chart-using-recharts-in-reactjs/ & https://recharts.org/en-US/api/BarChart
  * * tmp comment : source to comment : https://buzut.net/bien-commenter-son-code/
@@ -19,7 +21,7 @@ import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
  *  1: Object { day: "2022-07-02", kilogram: 80, calories: 220 }
 */
  
-export default function UserActivityBarChart(props) {
+function UserActivityBarChart(props) {
     const sessions = props.datasActivity;
 
     for (let x = 0; x < sessions.length; x++) sessions[x].day = x+1; // replace date in day by num like figma
@@ -105,5 +107,6 @@ export default function UserActivityBarChart(props) {
 
 UserActivityBarChart.propTypes = {
     datasActivity: PropTypes.array
-};
+}
 
+export default UserActivityBarChart

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/Linechart/LineChartCustomTooltipContent.jsx</title>
+    <title>JSDoc: Source: Components/BarChart/BarChartCustomTooltip.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/Linechart/LineChartCustomTooltipContent.jsx</h1>
+    <h1 class="page-title">Source: Components/BarChart/BarChartCustomTooltip.jsx</h1>
 
     
 
@@ -27,27 +27,27 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * return html code for LineChart tooltip 
+ * return html code for BarChart tooltip 
  
 * @component
- * used in UserAverageSessionsLineChart.jsx
  * @return { HTMLElement }
  * ​
  */
 
-function LineChartCustomTooltipContent({ active, payload }) {
+function BarChartCustomTooltip({ active, payload }) {
     if (active &amp;&amp; payload &amp;&amp; payload.length) {
       return (
-        &lt;div className="line-chart-custom-tooltip-content">
-          &lt;p>{`${payload[0].value} min`}&lt;/p>
+        &lt;div className="user-page__graph__left__activity-chart__tooltip">
+              &lt;p>{`${payload[0].value} kg`}&lt;/p>
+              &lt;p>{`${payload[1].value} kcal`}&lt;/p>
         &lt;/div>
-      )
+      );
     }
   
-    return null
+    return null;
   };
 
-  export default LineChartCustomTooltipContent</code></pre>
+  export default BarChartCustomTooltip</code></pre>
         </article>
     </section>
 

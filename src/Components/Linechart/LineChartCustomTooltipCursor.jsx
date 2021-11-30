@@ -1,11 +1,14 @@
 
 /**
  * This component is set to hide the vertical white line position
+ *
+ * @component
  * used in UserAverageSessionsLineChart.jsx
  * ​
  */
 
-export default function LineChartCustomTooltipCursor() {
+function LineChartCustomTooltipCursor() {
     return null
 }
 
+export default LineChartCustomTooltipCursor

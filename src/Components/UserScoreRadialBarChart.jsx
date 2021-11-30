@@ -4,6 +4,8 @@ import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from '
 
 /**
  * return template with user'sxcore radial bar chart
+ *
+ * @component
  * used in MainComponent.jsx
  * @param { number } props.theScore
  * @return { HTMLElement }
@@ -11,7 +13,7 @@ import { ResponsiveContainer, RadialBarChart, RadialBar, PolarAngleAxis } from '
  *  theScore contains the data t display (float)
 */
 
- export default function UserScoreRadialBarChart(props) {
+function UserScoreRadialBarChart(props) {
 
     const theScore = props.theScore;
     const formatedScore = [
@@ -65,3 +67,4 @@ UserScoreRadialBarChart.propTypes = {
     data: PropTypes.number
 };
 
+export default UserScoreRadialBarChart
