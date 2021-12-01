@@ -26,16 +26,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * fetch API datas and return it in an array, or return mocked datas if const mokedDatas = true
- *  used in MainComponent.jsx
- * for each function :
- * @param   {number} id user id
- * @return  {array |"error"}     user datas in an array
- */
- 
-
-
+            <pre class="prettyprint source linenums"><code>
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from  "./datas.js"
 
 const apisUrl = 'http://localhost:3000'
@@ -43,19 +34,21 @@ let mokedDatas = false // if we want to use test datas or real datas api
 console.log(`mokedDatas in 'GetUserDatas  : ${mokedDatas}`)
 
 /**
- * return USER_MAIN_DATA in an array
+ * Return USER_MAIN_DATA in an array
+ * 
+ * @summary Used in MainComponent.jsx&lt;br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas&lt;br>
+ * you can also change the url of the api (const apisUrl )
  * @param   {number} id user id
- * //@return  {array |"error"}     user datas in an array
  * @returns {Object}  user datas : id,  keyData  { calorieCount, proteinCount, carbohydrateCount, lipidCount }, todayScore, userInfos: Object { firstName, lastName, ag e}
  * @throws {Error}
  */
-
  export async function GetUserMainDatas(id) {
   try {
-    id = validInteger(id);
+    id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}`);
-      const dataUser = await response.json();
+      const dataUser = await response.json()
       //et surtout pas return await response.json().data;
       //moins bien :
       //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())     
@@ -92,13 +85,17 @@ export async function GetUserDatasH(id) {
 
 /**
  * return USER_ACTIVITY datas in an array
+ * 
+ * @summary Used in MainComponent.jsx&lt;br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas&lt;br>
+ * you can also change the url of the api (const apisUrl )
  * @param   {number} id user id
  * @return  {array } user datas in an array
+ * @throws {Error}
  */
-
 export async function GetUserActivity(id) {
   try {
-      id = validInteger(id);
+      id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/activity`);
       const dataUser = await response.json();
@@ -113,15 +110,19 @@ export async function GetUserActivity(id) {
 
 
 /**
- * return USER_AVERAGE_SESSIONS datas in an array
+ * Return USER_AVERAGE_SESSIONS in an array
+ * 
+ * @summary Used in MainComponent.jsx&lt;br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas&lt;br>
+ * you can also change the url of the api (const apisUrl )
+ * 
  * @param   {number} id user id
  * @return  {array} user datas in an array
+ * @throws {Error}
  */
-
-
 export async function GetUserAverageSessions(id) { // ressemble a activity dans la structure
   try {
-    id = validInteger(id);
+    id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/average-sessions`);
       const dataUser = await response.json();
@@ -136,14 +137,18 @@ export async function GetUserAverageSessions(id) { // ressemble a activity dans 
 
 
 /**
- * return USER_PERFORMANCE datas in an array
+ * Return USER_PERFORMANCE in an array
+ * 
+ * @summary Used in MainComponent.jsx&lt;br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas&lt;br>
+ * you can also change the url of the api (const apisUrl )
  * @param   {Integer} id user id
  * @return  {array} user datas in an array
+ * @throws {Error}
  */
-
 export async function GetUserPerformance(id) {
   try {
-    id = validInteger(id);
+    id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/performance`);
       const dataUser = await response.json();
@@ -157,9 +162,13 @@ export async function GetUserPerformance(id) {
 }
 
 
-
-
-function validInteger(num){
+/**
+ * @summary used by other functions in this file to check if a value is an integer
+ * @param { * } num 
+ * @private
+ * @returns { Number }
+ */
+function _validInteger(num){
   num = parseInt(num);
   if (isNaN(num)) throw new Error("id is not an Integer");
   return num;
@@ -173,13 +182,13 @@ function validInteger(num){
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li><li><a href="global.html#keyData">keyData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Nov 30 2021 11:42:49 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 11:26:25 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

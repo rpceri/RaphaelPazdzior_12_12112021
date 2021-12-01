@@ -2,8 +2,8 @@
  * Component for header with navigation.
  *
  * @component
+ * @return { HTMLElement }
  */
-
 function Header() {
     return (<header className="header">
         <img src={`${process.env.PUBLIC_URL}/pictures/logo.png`} alt="SportSee" />

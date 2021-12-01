@@ -2,18 +2,20 @@
  import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
 
  /**
- * return html code with user's performance radar chart
- * used in MainComponent.jsx
+ * Return html code with user's performance radar chart
+ *  
+ * @summary used in MainComponent.jsx
  *
  * @component
  * @param { array.<{ value: Number, kind: Number }> } props.datasUserPerformance
+ * @param { Number } props.datasUserPerformance.value ex: 100
+ * @param { Number } props.datasUserPerformance.kind ex: 2
  * @return { HTMLElement }
  * ​
- *  datasUserPerformance is an object array who contain for example
- * 0: Object { value: 100, kind: 1 }
+ * @example datasUserPerformance is an object array who contain for example<br>
+ * 0: Object { value: 100, kind: 1 }<br>
 ​ * 1: Object { value: 101, kind: 2 }
  */
-
 function UserPerformanceRadarChart(props) {
     //var perfsUnordered = props.datasUserPerformance // attention si on fait cela et qu'on modifie le 2d tableau, le 1er va aussi etre modifié
     var perfsUnordered = JSON.parse(JSON.stringify(props.datasUserPerformance)) // BE VERY CARREFUL ATTENTION : copy an objet table shoud be like that, either, props.datasUserPerformance is also modified
@@ -56,7 +58,9 @@ function UserPerformanceRadarChart(props) {
 }
 
 UserPerformanceRadarChart.propTypes = {
-    datasUserPerformance: PropTypes.array
+    datasUserPerformance: PropTypes.arrayOf(PropTypes.shape({
+        value:PropTypes.number.isRequired, kind: PropTypes.number.isRequired
+      }))
 }
 
 export default UserPerformanceRadarChart

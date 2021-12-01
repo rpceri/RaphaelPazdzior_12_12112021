@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types'; // permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning si ça ne correspond pas
 
 /**
- * return template with userName
+ * Return template with userName
  *
  * @component
- * @example
- * used in MainComponent.jsx
- * @param { string } props.userName
+ * @summary used in MainComponent.jsx
+ * @param { string } props.userName ex : Raph
  * @return { HTMLElement }
 */
-
 function UserInfo(props) {
     if(props.firstName !== undefined ) {
         const firstName = props.firstName;

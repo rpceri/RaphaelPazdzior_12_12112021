@@ -5,36 +5,38 @@ import LineChartCustomTooltipContent from "./Linechart/LineChartCustomTooltipCon
 import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCursor.jsx";
 
 /**
- * return html code with user's duration session chart
+ * Return html code with user's duration session chart
  *
  * @component
- * used in MainComponent.jsx
+ * @summary used in MainComponent.jsx
  * @param { array.<{ day: Number, sessionLength: Number }> } props.datasAverageSessions
+ * @param { Number } props.datasAverageSessions.day ex: 1
+ * @param { Number } props.datasAverageSessions.sessionLength ex: 20
+ * 
  * @return { HTMLElement }
  * ​
- *  datasAverageSessions is an object array who contain for example
+ * @example datasAverageSessions is an object array who contain for example
  *  0: Object { day: 1, sessionLength: 10 }
  *  1: Object { day: 2, sessionLength: 20 }
 */
-
 function UserAverageSessionsLineChart(props) {
-    const sessions = props.datasAverageSessions;
+    var datatoDisplay = JSON.parse(JSON.stringify(props.datasAverageSessions))
 
     // replace  day by initial
     let joursSeamine = {'1':'L', '2':'M', '3':'Me', '4':'J', '5':'V', '6':'S', '7':'D'}
-    for (let x = 0; x < sessions.length; x++) {
-        let valJour = sessions[x].day // may be a number beetwenn  1 and 7
-        if(joursSeamine[valJour]) sessions[x].day = joursSeamine[valJour]
+    for (let x = 0; x < datatoDisplay.length; x++) {
+        let valJour = datatoDisplay[x].day // may be a number beetwenn  1 and 7
+        if(joursSeamine[valJour]) datatoDisplay[x].day = joursSeamine[valJour]
     }
-    //console.log(sessions)
-    const arraySessionLength = sessions.map(el => el.sessionLength); // to keep sessionLength values only
+    //console.log(datatoDisplay)
+    const arraySessionLength = datatoDisplay.map(el => el.sessionLength); // to keep sessionLength values only
     //console.log(arraySessionLength)
     const maxSessionLength = Math.max(...arraySessionLength);
 
     return (<div  className="user-page__graph__left__bottom__User-Average-Sessions-LineChart">
                 <h2>Durée moyenne des<br />sessions</h2>
 
-                {/*sessions.map((session) => (
+                {/*datatoDisplay.map((session) => (
                     <li key={ session.day }>
                         {session.day} : {session.sessionLength}
                     </li>
@@ -42,7 +44,7 @@ function UserAverageSessionsLineChart(props) {
 
                 <ResponsiveContainer width="100%" height="100%">
                 <LineChart 
-                    data={sessions} 
+                    data={datatoDisplay} 
                     width={200} height={200} 
                     margin={{ top: 60, right: 0, bottom: 0, left:0 }}>
                     <defs>
@@ -94,7 +96,10 @@ function UserAverageSessionsLineChart(props) {
 }
 
 UserAverageSessionsLineChart.propTypes = {
-    datasAverageSessions: PropTypes.array
+    datasAverageSessions: PropTypes.arrayOf(PropTypes.shape({
+        day:PropTypes.number.isRequired, sessionLength: PropTypes.number.isRequired
+      }))
 };
+
 
 export default UserAverageSessionsLineChart

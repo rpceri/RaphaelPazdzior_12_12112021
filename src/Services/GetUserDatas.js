@@ -1,12 +1,3 @@
-/**
- * fetch API datas and return it in an array, or return mocked datas if const mokedDatas = true
- *  used in MainComponent.jsx
- * for each function :
- * @param   {number} id user id
- * @return  {array |"error"}     user datas in an array
- */
- 
-
 
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from  "./datas.js"
 
@@ -15,19 +6,21 @@ let mokedDatas = false // if we want to use test datas or real datas api
 console.log(`mokedDatas in 'GetUserDatas  : ${mokedDatas}`)
 
 /**
- * return USER_MAIN_DATA in an array
+ * Return USER_MAIN_DATA in an array
+ * 
+ * @summary Used in MainComponent.jsx<br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas<br>
+ * you can also change the url of the api (const apisUrl )
  * @param   {number} id user id
- * //@return  {array |"error"}     user datas in an array
  * @returns {Object}  user datas : id,  keyData  { calorieCount, proteinCount, carbohydrateCount, lipidCount }, todayScore, userInfos: Object { firstName, lastName, ag e}
  * @throws {Error}
  */
-
  export async function GetUserMainDatas(id) {
   try {
-    id = validInteger(id);
+    id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}`);
-      const dataUser = await response.json();
+      const dataUser = await response.json()
       //et surtout pas return await response.json().data;
       //moins bien :
       //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())     
@@ -64,13 +57,17 @@ export async function GetUserDatasH(id) {
 
 /**
  * return USER_ACTIVITY datas in an array
+ * 
+ * @summary Used in MainComponent.jsx<br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas<br>
+ * you can also change the url of the api (const apisUrl )
  * @param   {number} id user id
  * @return  {array } user datas in an array
+ * @throws {Error}
  */
-
 export async function GetUserActivity(id) {
   try {
-      id = validInteger(id);
+      id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/activity`);
       const dataUser = await response.json();
@@ -85,15 +82,19 @@ export async function GetUserActivity(id) {
 
 
 /**
- * return USER_AVERAGE_SESSIONS datas in an array
+ * Return USER_AVERAGE_SESSIONS in an array
+ * 
+ * @summary Used in MainComponent.jsx<br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas<br>
+ * you can also change the url of the api (const apisUrl )
+ * 
  * @param   {number} id user id
  * @return  {array} user datas in an array
+ * @throws {Error}
  */
-
-
 export async function GetUserAverageSessions(id) { // ressemble a activity dans la structure
   try {
-    id = validInteger(id);
+    id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/average-sessions`);
       const dataUser = await response.json();
@@ -108,14 +109,18 @@ export async function GetUserAverageSessions(id) { // ressemble a activity dans 
 
 
 /**
- * return USER_PERFORMANCE datas in an array
+ * Return USER_PERFORMANCE in an array
+ * 
+ * @summary Used in MainComponent.jsx<br>
+ * in this file, you can change mokedDatas (true or false) to choose source of datas<br>
+ * you can also change the url of the api (const apisUrl )
  * @param   {Integer} id user id
  * @return  {array} user datas in an array
+ * @throws {Error}
  */
-
 export async function GetUserPerformance(id) {
   try {
-    id = validInteger(id);
+    id = _validInteger(id);
     if (!mokedDatas) {
       const response = await fetch(`${apisUrl}/user/${id}/performance`);
       const dataUser = await response.json();
@@ -129,9 +134,13 @@ export async function GetUserPerformance(id) {
 }
 
 
-
-
-function validInteger(num){
+/**
+ * @summary used by other functions in this file to check if a value is an integer
+ * @param { * } num 
+ * @private
+ * @returns { Number }
+ */
+function _validInteger(num){
   num = parseInt(num);
   if (isNaN(num)) throw new Error("id is not an Integer");
   return num;

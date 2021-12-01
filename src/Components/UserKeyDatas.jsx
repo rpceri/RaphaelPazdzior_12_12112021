@@ -1,15 +1,19 @@
  import PropTypes from 'prop-types'; // permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning si ça ne correspond pas
 
  /**
- * return html code with key Datas
+ * Return html code with key Datas (Calories, Proteines, Glucides, Lipides)
  *
  * @component
- * used in MainComponent.jsx
- * @param { string } props.keyDatas
+ * @summary used in MainComponent.jsx
+ * @param { array.<{ calorieCount: Number, proteinCount: Number, lipidCount: Number }> } props.keyDatas
+ * @param { Number } props.keyDatas.calorieCount ex: 1
+ * @param { Number } props.keyDatas.proteinCount ex: 20
+ * @param { Number } props.keyDatas.lipidCount ex: 20
+ * 
  * @return { HTMLElement }
  */
-
  function UserKeyDatas(props) {
+
      if(props.keyData !== undefined ) {
          return (        
              <> 
@@ -24,20 +28,23 @@
  }
 
  UserKeyDatas.propTypes = {
-    keyData: PropTypes.object
+    keyData: PropTypes.shape({
+        calorieCount:PropTypes.number.isRequired, proteinCount: PropTypes.number.isRequired, carbohydrateCount: PropTypes.number.isRequired
+      }),
  }
 
  export default UserKeyDatas
 
+
  /**
- * return html code with a single Key Data
- * used in MainComponent.jsx
+ * Private function that return html code with a single Key Data
+ * @summary used in UserKeyDatas
+ * @private
  * @param { string } name A label for the Data, also used in css
  * @param { string } value The value of the data
  * @param { string } picture The name of picture ti display, with extension
  * @return { HTMLElement }
  */
-
 function keyData(name, value, picture) {
     
     if(name !== '') {   

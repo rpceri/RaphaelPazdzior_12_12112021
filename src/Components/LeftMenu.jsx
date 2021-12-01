@@ -2,9 +2,8 @@
  * Component for left navigation
  *
  * @component
- * 
+ * @return { HTMLElement }
 */
-
 function LeftMenu() {
     return <aside className="Leftmenu">
         <div className="Leftmenu__button-list">

@@ -45,38 +45,48 @@
     <section>
         <article><h1>Sportsee</h1>
 <p>Sportsee is an application for monitoring your physical activity.
-For this project I'm using <a href="https://reactjs.org/">React</a> whith vsCode and <a href="https://recharts.org/">Recharts</a>.
-Project was inisialised whith Create React App</p>
+this project was made in <a href="https://reactjs.org/">React</a> whith vsCode and <a href="https://recharts.org/">Recharts</a>.
+Project was initialised whith Create React App
+Datas provided by an api: https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard, can be mocked (see below)</p>
 <h2>Links</h2>
 <ul>
-<li>[Repository https://github.com/rpceri/RaphaelPazdzior_12_12112021)</li>
 <li><a href="https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1">Figma</a></li>
+<li><a href="https://github.com/rpceri/RaphaelPazdzior_12_12112021">GitHub repository</a></li>
+<li><a href="https://rpceri.github.io/RaphaelPazdzior_12_12112021/">Online documentation</a> (done whith jsdoc)</li>
 </ul>
 <h2>Technologies</h2>
 <ul>
 <li>JS</li>
-<li>CSS</li>
+<li>SCSS</li>
 <li>React</li>
 </ul>
 <h2>Authors</h2>
-<p>Our code squad : Raphael Pazdzior</p>
+<p>Raphael Pazdzior</p>
 <h2>Licensing</h2>
 <p>This project was built under the Creative Commons licence.</p>
 <h2>prerequisite | dependencies</h2>
 <p>This project uses <a href="https://yarnpkg.com/">Yarn</a> as package manager.
-It requires :
-node-sass : 5.0.0
-react: ^17.0.2,
-react-dom: &quot;^17.0.
-react-router-dom: &quot;^6.0.2
-react-scripts: &quot;4.0.3
-recharts: &quot;^2.1.6&quot;,</p>
+It requires :</p>
+<ul>
+<li>node-sass : 5.0.0</li>
+<li>react: ^17.0.2,</li>
+<li>react-dom: &quot;^17.0.</li>
+<li>react-router-dom: &quot;^6.0.2</li>
+<li>react-scripts: &quot;4.0.3</li>
+<li>recharts: &quot;^2.1.6&quot;,</li>
+<li>recharts and jsdoc (to build the html doc)</li>
+</ul>
 <h2>Installation</h2>
 <p>1 - Install Yarn on your system</p>
 <p>2 - Download this project and open the folder</p>
 <p>3 - Install the dependencies with <code>yarn install</code></p>
-<p>4 - Start with <code>yarn start</code></p>
-<p>5 - To build  a production version : <code>yarn build</code></p></article>
+<p>4- you can change source of datas :</p>
+<ul>
+<li>api or a js file (moked datas) : you can chosose it by change the value of the booléan &quot;mokedDatas&quot; in Services/GetUserDatas.js</li>
+<li>if  you want to use api's datas, you can change the url in &quot;apisUrl&quot; in  the same file</li>
+</ul>
+<p>5 - Start with <code>yarn start</code></p>
+<p>6 - To build a production version : <code>yarn build</code> (to do)</p></article>
     </section>
 
 
@@ -87,13 +97,13 @@ recharts: &quot;^2.1.6&quot;,</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li><li><a href="global.html#keyData">keyData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Nov 30 2021 11:42:49 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 11:26:25 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

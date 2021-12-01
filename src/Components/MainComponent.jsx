@@ -33,31 +33,30 @@ function MainComponent() {
         GetUserMainDatas(idParams)
             .then(returnedDatas => {
                 setDatasUserBase(returnedDatas)
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch((e) => {
                 console.log("pb api1", e)      
                 }
             )
-  
         GetUserActivity(idParams)
             .then(returnedDatas => {
                 setDatasActivity(returnedDatas);
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
         GetUserAverageSessions(idParams)
             .then(returnedDatas => {
                 setDatasAverageSessions(returnedDatas) 
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
         GetUserPerformance(idParams)
             .then(returnedDatas => {
                 setDatasUserPerformance(returnedDatas)
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
@@ -74,11 +73,19 @@ function MainComponent() {
             <UserInfo firstName={datasUserBase.userInfos.firstName} />
             <div className="user-page__graph">
                 <div className="user-page__graph__left">
+                    { datasActivity.length > 0 && 
                     <UserActivityBarChart datasActivity={datasActivity} />
+                    }
                     <div className="user-page__graph__left__bottom">
+                        { datasAverageSessions.length > 0 && 
                         <UserAverageSessionsLineChart datasAverageSessions={datasAverageSessions} />
+                        }
+                        { datasUserPerformance.length > 0 && 
                         <UserPerformanceRadarChart datasUserPerformance={datasUserPerformance} />
+                        }
+                        { theScore !== '' && 
                         <UserScoreRadialBarChart theScore={theScore} />
+                        }
                     </div>
                 </div>
                 <div className="user-page__graph__right">

@@ -4,31 +4,27 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
 
 /**
- * return html code with user's activity chart
+ * Return html code with user's activity chart
  *
  * @component
- * used in MainComponent.jsx
- * tmp comment : help on recharts : https://www.geeksforgeeks.org/create-a-radar-chart-using-recharts-in-reactjs/ & https://recharts.org/en-US/api/BarChart
- * * tmp comment : source to comment : https://buzut.net/bien-commenter-son-code/
- * @param { array.<Object> } props.datasActivity
+ * @summary used in MainComponent.jsx
  * @param { array.<{ date: String, kilogram: Number, calories: Number }> } props.datasActivity
- * @param { String } props.datasActivity.day
- * @param { Number  } props.datasActivity.kilogram
- * @param { Number  } props.datasActivity.calories
+ * @param { String } props.datasActivity.day ex: 2022-07-01
+ * @param { Number } props.datasActivity.kilogram wheight in kg, ex : 80
+ * @param { Number } props.datasActivity.calories burned calories, ex : 220
  * @return { HTMLElement }
- *  datasActivity is an object array who contain for example :
- *  0: Object { day: "2022-07-01", kilogram: 8, calories: 240 }    ​
+ * @example datasActivity is an object array who contain for example :
+ *  0: Object { day: "2022-07-01", kilogram: 81, calories: 240 }    ​
  *  1: Object { day: "2022-07-02", kilogram: 80, calories: 220 }
 */
- 
-function UserActivityBarChart(props) {
-    const sessions = props.datasActivity;
+ function UserActivityBarChart(props) {
+    var datatoDisplay = JSON.parse(JSON.stringify(props.datasActivity))
 
-    for (let x = 0; x < sessions.length; x++) sessions[x].day = x+1; // replace date in day by num like figma
+    for (let x = 0; x < datatoDisplay.length; x++) datatoDisplay[x].day = x+1; // replace date in day by num like figma
 
-    //console.log(sessions)      
-    let arrayKilo = sessions.map(el => el.kilogram);
-    let arrayCalories = sessions.map(el => el.calories);
+    //console.log(datatoDisplay)      
+    let arrayKilo = datatoDisplay.map(el => el.kilogram);
+    let arrayCalories = datatoDisplay.map(el => el.calories);
     let minKilo = 0; 
     let maxKilo = Math.max(...arrayKilo); // opérateur de décomposition (spread opérator) because  Math.min waiting for a suit of number in argument (ex : 1 ,8, 0)
     let minCalories = 0 //Math.min(...arrayCalories);
@@ -41,7 +37,7 @@ function UserActivityBarChart(props) {
         <h2 className="user-page__graph__left__activity-chart__title">Activité quotidienne</h2>
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
-              data={sessions}
+              data={datatoDisplay}
               margin={{
                 top: 100,
                 left: 20,
@@ -50,7 +46,7 @@ function UserActivityBarChart(props) {
               barGap={10}
               barSize={10}
               width={850} height={250}
-            > {/*  width & heigh : no effect when ResponsiveContaineru sed */ }
+            > {/*  width & height : no effect when ResponsiveContaineru sed */ }
 
                 <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* strokeDasharray  pattern of dashes and gaps used to paint the lines of the grid = lignes du fond dans graph */ }
 
@@ -106,7 +102,10 @@ function UserActivityBarChart(props) {
 }
 
 UserActivityBarChart.propTypes = {
-    datasActivity: PropTypes.array
+    //datasActivity: PropTypes.array
+    datasActivity: PropTypes.arrayOf(PropTypes.shape({
+      day:PropTypes.string.isRequired, kilogram:PropTypes.number.isRequired, calories: PropTypes.number.isRequired
+    }))
 }
 
 export default UserActivityBarChart

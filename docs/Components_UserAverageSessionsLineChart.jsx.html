@@ -33,36 +33,38 @@ import LineChartCustomTooltipContent from "./Linechart/LineChartCustomTooltipCon
 import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCursor.jsx";
 
 /**
- * return html code with user's duration session chart
+ * Return html code with user's duration session chart
  *
  * @component
- * used in MainComponent.jsx
+ * @summary used in MainComponent.jsx
  * @param { array.&lt;{ day: Number, sessionLength: Number }> } props.datasAverageSessions
+ * @param { Number } props.datasAverageSessions.day ex: 1
+ * @param { Number } props.datasAverageSessions.sessionLength ex: 20
+ * 
  * @return { HTMLElement }
  * ​
- *  datasAverageSessions is an object array who contain for example
+ * @example datasAverageSessions is an object array who contain for example
  *  0: Object { day: 1, sessionLength: 10 }
  *  1: Object { day: 2, sessionLength: 20 }
 */
-
 function UserAverageSessionsLineChart(props) {
-    const sessions = props.datasAverageSessions;
+    var datatoDisplay = JSON.parse(JSON.stringify(props.datasAverageSessions))
 
     // replace  day by initial
     let joursSeamine = {'1':'L', '2':'M', '3':'Me', '4':'J', '5':'V', '6':'S', '7':'D'}
-    for (let x = 0; x &lt; sessions.length; x++) {
-        let valJour = sessions[x].day // may be a number beetwenn  1 and 7
-        if(joursSeamine[valJour]) sessions[x].day = joursSeamine[valJour]
+    for (let x = 0; x &lt; datatoDisplay.length; x++) {
+        let valJour = datatoDisplay[x].day // may be a number beetwenn  1 and 7
+        if(joursSeamine[valJour]) datatoDisplay[x].day = joursSeamine[valJour]
     }
-    //console.log(sessions)
-    const arraySessionLength = sessions.map(el => el.sessionLength); // to keep sessionLength values only
+    //console.log(datatoDisplay)
+    const arraySessionLength = datatoDisplay.map(el => el.sessionLength); // to keep sessionLength values only
     //console.log(arraySessionLength)
     const maxSessionLength = Math.max(...arraySessionLength);
 
     return (&lt;div  className="user-page__graph__left__bottom__User-Average-Sessions-LineChart">
                 &lt;h2>Durée moyenne des&lt;br />sessions&lt;/h2>
 
-                {/*sessions.map((session) => (
+                {/*datatoDisplay.map((session) => (
                     &lt;li key={ session.day }>
                         {session.day} : {session.sessionLength}
                     &lt;/li>
@@ -70,7 +72,7 @@ function UserAverageSessionsLineChart(props) {
 
                 &lt;ResponsiveContainer width="100%" height="100%">
                 &lt;LineChart 
-                    data={sessions} 
+                    data={datatoDisplay} 
                     width={200} height={200} 
                     margin={{ top: 60, right: 0, bottom: 0, left:0 }}>
                     &lt;defs>
@@ -122,8 +124,11 @@ function UserAverageSessionsLineChart(props) {
 }
 
 UserAverageSessionsLineChart.propTypes = {
-    datasAverageSessions: PropTypes.array
+    datasAverageSessions: PropTypes.arrayOf(PropTypes.shape({
+        day:PropTypes.number.isRequired, sessionLength: PropTypes.number.isRequired
+      }))
 };
+
 
 export default UserAverageSessionsLineChart</code></pre>
         </article>
@@ -135,13 +140,13 @@ export default UserAverageSessionsLineChart</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li><li><a href="global.html#keyData">keyData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Nov 30 2021 11:42:49 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 11:26:25 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

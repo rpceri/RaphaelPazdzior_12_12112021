@@ -61,31 +61,30 @@ function MainComponent() {
         GetUserMainDatas(idParams)
             .then(returnedDatas => {
                 setDatasUserBase(returnedDatas)
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch((e) => {
                 console.log("pb api1", e)      
                 }
             )
-  
         GetUserActivity(idParams)
             .then(returnedDatas => {
                 setDatasActivity(returnedDatas);
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
         GetUserAverageSessions(idParams)
             .then(returnedDatas => {
                 setDatasAverageSessions(returnedDatas) 
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
         GetUserPerformance(idParams)
             .then(returnedDatas => {
                 setDatasUserPerformance(returnedDatas)
-                console.log(returnedDatas)
+                //console.log(returnedDatas)
             })
             .catch(err =>console.log("pb api", err))
 
@@ -102,11 +101,19 @@ function MainComponent() {
             &lt;UserInfo firstName={datasUserBase.userInfos.firstName} />
             &lt;div className="user-page__graph">
                 &lt;div className="user-page__graph__left">
+                    { datasActivity.length > 0 &amp;&amp; 
                     &lt;UserActivityBarChart datasActivity={datasActivity} />
+                    }
                     &lt;div className="user-page__graph__left__bottom">
+                        { datasAverageSessions.length > 0 &amp;&amp; 
                         &lt;UserAverageSessionsLineChart datasAverageSessions={datasAverageSessions} />
+                        }
+                        { datasUserPerformance.length > 0 &amp;&amp; 
                         &lt;UserPerformanceRadarChart datasUserPerformance={datasUserPerformance} />
+                        }
+                        { theScore !== '' &amp;&amp; 
                         &lt;UserScoreRadialBarChart theScore={theScore} />
+                        }
                     &lt;/div>
                 &lt;/div>
                 &lt;div className="user-page__graph__right">
@@ -133,13 +140,13 @@ export default MainComponent</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li><li><a href="global.html#keyData">keyData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Nov 30 2021 11:42:49 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Dec 01 2021 11:26:25 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
