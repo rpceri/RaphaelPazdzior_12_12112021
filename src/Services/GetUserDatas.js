@@ -12,7 +12,8 @@ console.log(`mokedDatas in 'GetUserDatas  : ${mokedDatas}`)
  * in this file, you can change mokedDatas (true or false) to choose source of datas<br>
  * you can also change the url of the api (const apisUrl )
  * @param   {number} id user id
- * @returns {Object}  user datas : id,  keyData  { calorieCount, proteinCount, carbohydrateCount, lipidCount }, todayScore, userInfos: Object { firstName, lastName, ag e}
+ * @returns {Object | "error"}  user datas : id,  keyData  { calorieCount, proteinCount, carbohydrateCount, lipidCount }, todayScore, userInfos: Object { firstName, lastName, ag e}
+ * can return the "error" string if the user id is not found by the api
  * @throws {Error}
  */
  export async function GetUserMainDatas(id) {
@@ -23,14 +24,16 @@ console.log(`mokedDatas in 'GetUserDatas  : ${mokedDatas}`)
       const dataUser = await response.json()
       //et surtout pas return await response.json().data;
       //moins bien :
-      //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())     
+      //let dataUser = await fetch(`${apisUrl}/user/${id}`).then((response) => response.json())
+      if(dataUser === 'can not get user') return 'error';
       return dataUser.data
     } 
     return  USER_MAIN_DATA[0];
   } catch (error) {
     throw error;
   }
-}/*
+}
+/*
 export async function GetUserDatasH(id) {      
     let result = ''
 

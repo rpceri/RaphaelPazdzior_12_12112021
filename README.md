@@ -1,9 +1,9 @@
 # Sportsee
 
 Sportsee is an application for monitoring your physical activity. 
-this project was made in [React](https://reactjs.org/) whith vsCode and [Recharts](https://recharts.org/).
-Project was initialised whith Create React App
-Datas provided by an api: https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard, can be mocked (see below)
+this project was made in [React](https://reactjs.org/) with vsCode and [Recharts](https://recharts.org/) (Redefined chart library built with React and D3).
+Project was initialised with Create React App
+Datas provided by an [api](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard), can be mocked (see below)
 
 
 ## Links
@@ -14,7 +14,7 @@ Datas provided by an api: https://github.com/OpenClassrooms-Student-Center/P9-fr
 
 
 ## Technologies
-- JS
+- JS, JSX
 - SCSS 
 - React
 
@@ -39,7 +39,7 @@ It requires :
 - react-router-dom: "^6.0.2
 - react-scripts: "4.0.3
 - recharts: "^2.1.6",
-- recharts and jsdoc (to build the html doc)
+- better-docs and jsdoc (to build the html doc)
 
 ## Installation
 

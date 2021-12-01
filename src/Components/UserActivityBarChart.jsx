@@ -36,7 +36,7 @@ import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
     return <article className="user-page__graph__left__activity-chart">
         <h2 className="user-page__graph__left__activity-chart__title">Activité quotidienne</h2>
         <ResponsiveContainer width="100%" height="100%">
-            <BarChart
+            <BarChart 
               data={datatoDisplay}
               margin={{
                 top: 100,

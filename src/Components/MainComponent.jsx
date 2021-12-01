@@ -14,14 +14,13 @@ import UserKeyDatas from "./UserKeyDatas.jsx";
  * return html code that display user datas
  *
  * @component
- * used in App.js
+ * @summary used in App.js<br />
  * required : { int } useParams().idUser
  * @return { HTMLElement }
 */
- 
 function MainComponent() {
-    const idParams = parseInt(useParams().idUser); //store id passed in parameters
-
+    var idParams = parseInt(useParams().idUser); //store id passed in parameters
+    const [statReturnApi, setSstatReturnApi] = useState('virgin');
     const [datasUserBase, setDatasUserBase] = useState([]); // allDatas = state, useState=hook, renvoie une paire de val : l’état actuel et une fct pour le modifier 
     const [datasActivity, setDatasActivity] = useState([]);
     const [datasAverageSessions, setDatasAverageSessions] = useState([]);
@@ -29,46 +28,53 @@ function MainComponent() {
     console.log(`idParams : ${idParams}`)
 
     useEffect( () => { // nb : se déclenche après le rendu
-        //setDatasUserBase(await GetUserDatas(idParams))
         GetUserMainDatas(idParams)
             .then(returnedDatas => {
-                setDatasUserBase(returnedDatas)
-                //console.log(returnedDatas)
+
+                if(returnedDatas === 'error') {
+                    setSstatReturnApi('nok')
+                } else {
+                    setSstatReturnApi('ok')
+
+                    //setDatasUserBase(await GetUserDatas(idParams))    
+                    setDatasUserBase(returnedDatas)
+                    //console.log(returnedDatas)
+
+                    GetUserActivity(idParams)
+                    .then(returnedDatas => {
+                        setDatasActivity(returnedDatas);
+                        //console.log(returnedDatas)
+                    })
+                    .catch(err =>console.log("pb api", err))
+        
+                    GetUserAverageSessions(idParams)
+                        .then(returnedDatas => {
+                            setDatasAverageSessions(returnedDatas) 
+                            //console.log(returnedDatas)
+                        })
+                        .catch(err =>console.log("pb api", err))
+            
+                    GetUserPerformance(idParams)
+                        .then(returnedDatas => {
+                            setDatasUserPerformance(returnedDatas)
+                            //console.log(returnedDatas)
+                        })
+                        .catch(err =>console.log("pb api", err))
+                }
             })
             .catch((e) => {
                 console.log("pb api1", e)      
                 }
             )
-        GetUserActivity(idParams)
-            .then(returnedDatas => {
-                setDatasActivity(returnedDatas);
-                //console.log(returnedDatas)
-            })
-            .catch(err =>console.log("pb api", err))
-
-        GetUserAverageSessions(idParams)
-            .then(returnedDatas => {
-                setDatasAverageSessions(returnedDatas) 
-                //console.log(returnedDatas)
-            })
-            .catch(err =>console.log("pb api", err))
-
-        GetUserPerformance(idParams)
-            .then(returnedDatas => {
-                setDatasUserPerformance(returnedDatas)
-                //console.log(returnedDatas)
-            })
-            .catch(err =>console.log("pb api", err))
-
     }, [idParams]); // idParams = tabelau de dépendances, pour préciser qu'on veut déclencher l'effet si idParams change
 
     //console.log(datasAverageSessions)
 
-    let theScore = 0;
-    if(datasUserBase.todayScore !== undefined) theScore = datasUserBase.todayScore
-    //console.log(theScore)
+    if(typeof(datasUserBase) !== 'undefined' && typeof(datasUserBase.userInfos) !== 'undefined') {
+        let theScore = 0;
+        if(datasUserBase.todayScore !== undefined) theScore = datasUserBase.todayScore
 
-    if(datasUserBase.userInfos !== undefined) {return (
+        return (
         <section className="user-page">
             <UserInfo firstName={datasUserBase.userInfos.firstName} />
             <div className="user-page__graph">
@@ -93,13 +99,19 @@ function MainComponent() {
                 </div>
             </div>
         </section> 
-    )
-    } else {return (
+        )
+    } 
+    
+    return (
         <section className="user-page">
-            No datats
+            <div class="user-page__entete">
+                <p>
+                    {statReturnApi === 'nok' && <>Utilisateur inconnu</>}
+                    {statReturnApi === 'virgin' && <>Chargement des données...</>}
+                </p>
+            </div>
         </section> 
         )
-    }
 }
 
 export default MainComponent
