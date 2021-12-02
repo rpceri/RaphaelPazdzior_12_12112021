@@ -33,13 +33,14 @@ This project was built under the Creative Commons licence.
 
 This project uses [Yarn](https://yarnpkg.com/) as package manager.
 It requires :
-- node-sass : 5.0.0
+- sass: "^1.44.0",
+- sass-loader: "^12.3.0",
 - react: ^17.0.2,
 - react-dom: "^17.0.
 - react-router-dom: "^6.0.2
 - react-scripts: "4.0.3
 - recharts: "^2.1.6",
-- better-docs and jsdoc (to build the html doc)
+- better-docs "^2.3.2" and jsdoc "^0.5.0" (to build the html doc)
 
 ## Installation
 
