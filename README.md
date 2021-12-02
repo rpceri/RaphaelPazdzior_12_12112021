@@ -1,6 +1,6 @@
 # Sportsee
 
-Sportsee is an application for monitoring your physical activity. 
+SportSee is an application for monitoring your physical activity. 
 this project was made in [React](https://reactjs.org/) with vsCode and [Recharts](https://recharts.org/) (Redefined chart library built with React and D3).
 Project was initialised with Create React App
 Datas provided by an [api](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard), can be mocked (see below)
@@ -55,4 +55,4 @@ It requires :
 
 5 - Start with `yarn start`
 
-6 - To build a production version : `yarn build` (to do)
+6 - To build a production version : `yarn build`

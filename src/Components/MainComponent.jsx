@@ -45,27 +45,30 @@ function MainComponent() {
                         setDatasActivity(returnedDatas);
                         //console.log(returnedDatas)
                     })
-                    .catch(err =>console.log("pb api", err))
+                    .catch(err =>console.log("pb api2", err))
         
                     GetUserAverageSessions(idParams)
                         .then(returnedDatas => {
                             setDatasAverageSessions(returnedDatas) 
                             //console.log(returnedDatas)
                         })
-                        .catch(err =>console.log("pb api", err))
+                        .catch(err =>console.log("pb api3", err))
             
                     GetUserPerformance(idParams)
                         .then(returnedDatas => {
                             setDatasUserPerformance(returnedDatas)
                             //console.log(returnedDatas)
                         })
-                        .catch(err =>console.log("pb api", err))
+                        .catch(function(err) {
+                            console.log("pb api4", err)
+                            setSstatReturnApi('pbApi')
+                        })
                 }
             })
-            .catch((e) => {
-                console.log("pb api1", e)      
-                }
-            )
+            .catch(function(err) {
+                console.log("pb api1", err)
+                setSstatReturnApi('pbApi')
+            })
     }, [idParams]); // idParams = tabelau de dépendances, pour préciser qu'on veut déclencher l'effet si idParams change
 
     //console.log(datasAverageSessions)
@@ -104,10 +107,11 @@ function MainComponent() {
     
     return (
         <section className="user-page">
-            <div class="user-page__entete">
+            <div className="user-page__entete">
                 <p>
                     {statReturnApi === 'nok' && <>Utilisateur inconnu</>}
                     {statReturnApi === 'virgin' && <>Chargement des données...</>}
+                    {statReturnApi === 'pbApi' && <>Problème technique... Veuillez nous excuser</>}
                 </p>
             </div>
         </section> 
