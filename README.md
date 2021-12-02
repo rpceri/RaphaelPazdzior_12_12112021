@@ -11,7 +11,7 @@ Datas provided by an [api](https://github.com/OpenClassrooms-Student-Center/P9-f
 - [Figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1)
 - [GitHub repository](https://github.com/rpceri/RaphaelPazdzior_12_12112021)
 - [Online documentation](https://rpceri.github.io/RaphaelPazdzior_12_12112021/) (done whith jsdoc)
-
+- [Online démo whith mocked datas, on netlify](https://romantic-blackwell-07ec1a.netlify.app/user/18)
 
 ## Technologies
 - JS, JSX
