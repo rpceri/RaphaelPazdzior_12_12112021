@@ -67,7 +67,7 @@
                     position: relative;
                     background-color: #ff0000;
                     border-radius: 5px;
-                    width: 200px; /* 32% */
+                    width: 210px; /* 32% */
                     margin: 1% 0 1% 0%;
                    h2 {
                         position: absolute;
@@ -81,15 +81,15 @@
                 &__radar-chart {
                     background-color: #282D30;
                     border-radius: 5px;
-                    width: 200px;
+                    width: 210px;
                     margin: 1% 0 1% 1%;
                 }
 
-                // UserPerformanceRadarChart
+                // UserScoreRadialBarChar
                 &__score-chart {
                     position: relative;
                     background-color: #fbfbfb;
-                    width: 200px;
+                    width: 210px;
                     border-radius: 5px;
                     margin: 1% 0% 1% 1%;
 
