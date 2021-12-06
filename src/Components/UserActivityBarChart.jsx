@@ -9,18 +9,16 @@ import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
  * @component
  * @summary used in MainComponent.jsx
  * @param { array.<{ date: String, kilogram: Number, calories: Number }> } props.datasActivity
- * @param { String } props.datasActivity.day ex: 2022-07-01
+ * @param { Number } props.datasActivity.day ex: 1
  * @param { Number } props.datasActivity.kilogram wheight in kg, ex : 80
  * @param { Number } props.datasActivity.calories burned calories, ex : 220
  * @return { HTMLElement }
  * @example datasActivity is an object array who contain for example :
- *  0: Object { day: "2022-07-01", kilogram: 81, calories: 240 }    ​
- *  1: Object { day: "2022-07-02", kilogram: 80, calories: 220 }
+ *  0: Object { day: 1, kilogram: 81, calories: 240 }    ​
+ *  1: Object { day: 2, kilogram: 80, calories: 220 }
 */
  function UserActivityBarChart(props) {
-    var datatoDisplay = JSON.parse(JSON.stringify(props.datasActivity))
-
-    for (let x = 0; x < datatoDisplay.length; x++) datatoDisplay[x].day = x+1; // replace date in day by num like figma
+    var datatoDisplay = props.datasActivity
 
     //console.log(datatoDisplay)      
     let arrayKilo = datatoDisplay.map(el => el.kilogram);
@@ -104,7 +102,7 @@ import BarChartCustomTooltip from "./BarChart/BarChartCustomTooltip.jsx";
 UserActivityBarChart.propTypes = {
     //datasActivity: PropTypes.array
     datasActivity: PropTypes.arrayOf(PropTypes.shape({
-      day:PropTypes.string.isRequired, kilogram:PropTypes.number.isRequired, calories: PropTypes.number.isRequired
+      day:PropTypes.number.isRequired, kilogram:PropTypes.number.isRequired, calories: PropTypes.number.isRequired
     }))
 }
 

@@ -38,28 +38,20 @@ import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCurs
  * @component
  * @summary used in MainComponent.jsx
  * @param { array.&lt;{ day: Number, sessionLength: Number }> } props.datasAverageSessions
- * @param { Number } props.datasAverageSessions.day ex: 1
+ * @param { Number } props.datasAverageSessions.day ex: 'L'
  * @param { Number } props.datasAverageSessions.sessionLength ex: 20
  * 
  * @return { HTMLElement }
  * ​
  * @example datasAverageSessions is an object array who contain for example
- *  0: Object { day: 1, sessionLength: 10 }
- *  1: Object { day: 2, sessionLength: 20 }
+ *  0: Object { day: 'L', sessionLength: 10 }
+ *  1: Object { day: 'M', sessionLength: 20 }
 */
 function UserAverageSessionsLineChart(props) {
-    var datatoDisplay = JSON.parse(JSON.stringify(props.datasAverageSessions))
+    var datatoDisplay = props.datasAverageSessions
 
-    // replace  day by initial
-    let joursSeamine = {'1':'L', '2':'M', '3':'Me', '4':'J', '5':'V', '6':'S', '7':'D'}
-    for (let x = 0; x &lt; datatoDisplay.length; x++) {
-        let valJour = datatoDisplay[x].day // may be a number beetwenn  1 and 7
-        if(joursSeamine[valJour]) datatoDisplay[x].day = joursSeamine[valJour]
-    }
-    //console.log(datatoDisplay)
-    const arraySessionLength = datatoDisplay.map(el => el.sessionLength); // to keep sessionLength values only
-    //console.log(arraySessionLength)
-    const maxSessionLength = Math.max(...arraySessionLength);
+    let arraySessionLength = datatoDisplay.map(el => el.sessionLength); // to keep sessionLength values only
+    let maxSessionLength = Math.max(...arraySessionLength); // max for YAxis
 
     return (&lt;div  className="user-page__graph__left__bottom__User-Average-Sessions-LineChart">
                 &lt;h2>Durée moyenne des&lt;br />sessions&lt;/h2>
@@ -125,7 +117,7 @@ function UserAverageSessionsLineChart(props) {
 
 UserAverageSessionsLineChart.propTypes = {
     datasAverageSessions: PropTypes.arrayOf(PropTypes.shape({
-        day:PropTypes.number.isRequired, sessionLength: PropTypes.number.isRequired
+        day:PropTypes.string.isRequired, sessionLength: PropTypes.number.isRequired
       }))
 };
 
@@ -140,13 +132,13 @@ export default UserAverageSessionsLineChart</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FormatAverageSessions">FormatAverageSessions</a></li><li><a href="global.html#FormatUserActivity">FormatUserActivity</a></li><li><a href="global.html#FormatUserPerformance">FormatUserPerformance</a></li><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 02 2021 15:03:37 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Dec 06 2021 18:13:45 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -35,35 +35,17 @@
  * @summary used in MainComponent.jsx
  *
  * @component
- * @param { array.&lt;{ value: Number, kind: Number }> } props.datasUserPerformance
+ * @param { array.&lt;{ value: Number, kind: String }> } props.datasUserPerformance
  * @param { Number } props.datasUserPerformance.value ex: 100
- * @param { Number } props.datasUserPerformance.kind ex: 2
+ * @param { String } props.datasUserPerformance.kind ex: 'Force'
  * @return { HTMLElement }
  * ​
  * @example datasUserPerformance is an object array who contain for example&lt;br>
- * 0: Object { value: 100, kind: 1 }&lt;br>
-​ * 1: Object { value: 101, kind: 2 }
+ * 0: Object { value: 100, kind: 'Intensité' }&lt;br>
+​ * 1: Object { value: 101, kind: 'Force' }
  */
 function UserPerformanceRadarChart(props) {
-    //var perfsUnordered = props.datasUserPerformance // attention si on fait cela et qu'on modifie le 2d tableau, le 1er va aussi etre modifié
-    var perfsUnordered = JSON.parse(JSON.stringify(props.datasUserPerformance)) // BE VERY CARREFUL ATTENTION : copy an objet table shoud be like that, either, props.datasUserPerformance is also modified
-
-    let kindLabels = {'1':'Cardio', '2':'Energie', '3':'Endurance', '4':'Force', '5':'Vitesse', '6':'Intensité'} // to replace kind number by appropriate label
-    let kindOrder = {'1':5, '2':4, '3':3, '4':2, '5':1, '6':0} // to order datas like figma
-    var perfsOrdered = []; // will contin ordered datats
-
-    for (let x = 0; x &lt; perfsUnordered.length; x++) {
-        let numKind = perfsUnordered[x].kind // may be a number beetwenn  1 and 6
-        if(kindLabels[numKind] &amp;&amp; kindOrder[numKind] !== undefined) {
-            perfsUnordered[x].kind = kindLabels[numKind]  //to change the label
-
-            // to order :
-            let indice = kindOrder[numKind]
-            //console.log(numKind + ' => indice :' + indice)
-            perfsOrdered[indice] = perfsUnordered[x]
-        }
-    }
-
+    let perfsOrdered = props.datasUserPerformance
     //console.log(perfsOrdered)
   
     return (&lt;div className="user-page__graph__left__bottom__radar-chart">
@@ -87,7 +69,7 @@ function UserPerformanceRadarChart(props) {
 
 UserPerformanceRadarChart.propTypes = {
     datasUserPerformance: PropTypes.arrayOf(PropTypes.shape({
-        value:PropTypes.number.isRequired, kind: PropTypes.number.isRequired
+        value:PropTypes.number.isRequired, kind: PropTypes.string.isRequired
       }))
 }
 
@@ -101,13 +83,13 @@ export default UserPerformanceRadarChart</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChartCustomTooltip.html">BarChartCustomTooltip</a></li><li><a href="Header.html">Header</a></li><li><a href="LeftMenu.html">LeftMenu</a></li><li><a href="LineChartCustomTooltipContent.html">LineChartCustomTooltipContent</a></li><li><a href="LineChartCustomTooltipCursor.html">LineChartCustomTooltipCursor</a></li><li><a href="MainComponent.html">MainComponent</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="UserActivityBarChart.html">UserActivityBarChart</a></li><li><a href="UserAverageSessionsLineChart.html">UserAverageSessionsLineChart</a></li><li><a href="UserInfo.html">UserInfo</a></li><li><a href="UserKeyDatas.html">UserKeyDatas</a></li><li><a href="UserPerformanceRadarChart.html">UserPerformanceRadarChart</a></li><li><a href="UserScoreRadialBarChart.html">UserScoreRadialBarChart</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FormatAverageSessions">FormatAverageSessions</a></li><li><a href="global.html#FormatUserActivity">FormatUserActivity</a></li><li><a href="global.html#FormatUserPerformance">FormatUserPerformance</a></li><li><a href="global.html#GetUserActivity">GetUserActivity</a></li><li><a href="global.html#GetUserAverageSessions">GetUserAverageSessions</a></li><li><a href="global.html#GetUserMainDatas">GetUserMainDatas</a></li><li><a href="global.html#GetUserPerformance">GetUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 02 2021 15:03:37 GMT+0100 (heure normale d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Dec 06 2021 18:13:45 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

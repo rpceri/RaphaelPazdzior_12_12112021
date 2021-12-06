@@ -10,28 +10,20 @@ import LineChartCustomTooltipCursor from "./Linechart/LineChartCustomTooltipCurs
  * @component
  * @summary used in MainComponent.jsx
  * @param { array.<{ day: Number, sessionLength: Number }> } props.datasAverageSessions
- * @param { Number } props.datasAverageSessions.day ex: 1
+ * @param { Number } props.datasAverageSessions.day ex: 'L'
  * @param { Number } props.datasAverageSessions.sessionLength ex: 20
  * 
  * @return { HTMLElement }
  * ​
  * @example datasAverageSessions is an object array who contain for example
- *  0: Object { day: 1, sessionLength: 10 }
- *  1: Object { day: 2, sessionLength: 20 }
+ *  0: Object { day: 'L', sessionLength: 10 }
+ *  1: Object { day: 'M', sessionLength: 20 }
 */
 function UserAverageSessionsLineChart(props) {
-    var datatoDisplay = JSON.parse(JSON.stringify(props.datasAverageSessions))
+    var datatoDisplay = props.datasAverageSessions
 
-    // replace  day by initial
-    let joursSeamine = {'1':'L', '2':'M', '3':'Me', '4':'J', '5':'V', '6':'S', '7':'D'}
-    for (let x = 0; x < datatoDisplay.length; x++) {
-        let valJour = datatoDisplay[x].day // may be a number beetwenn  1 and 7
-        if(joursSeamine[valJour]) datatoDisplay[x].day = joursSeamine[valJour]
-    }
-    //console.log(datatoDisplay)
-    const arraySessionLength = datatoDisplay.map(el => el.sessionLength); // to keep sessionLength values only
-    //console.log(arraySessionLength)
-    const maxSessionLength = Math.max(...arraySessionLength);
+    let arraySessionLength = datatoDisplay.map(el => el.sessionLength); // to keep sessionLength values only
+    let maxSessionLength = Math.max(...arraySessionLength); // max for YAxis
 
     return (<div  className="user-page__graph__left__bottom__User-Average-Sessions-LineChart">
                 <h2>Durée moyenne des<br />sessions</h2>
@@ -97,7 +89,7 @@ function UserAverageSessionsLineChart(props) {
 
 UserAverageSessionsLineChart.propTypes = {
     datasAverageSessions: PropTypes.arrayOf(PropTypes.shape({
-        day:PropTypes.number.isRequired, sessionLength: PropTypes.number.isRequired
+        day:PropTypes.string.isRequired, sessionLength: PropTypes.number.isRequired
       }))
 };
 

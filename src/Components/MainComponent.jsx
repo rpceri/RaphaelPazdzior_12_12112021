@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { GetUserMainDatas, GetUserActivity, GetUserAverageSessions, GetUserPerformance} from "../Services/GetUserDatas.js";
+import {FormatUserActivity, FormatAverageSessions, FormatUserPerformance} from "../Services/FormatDatas.js";
 
 import UserInfo from "./UserInfo.jsx";
 import UserActivityBarChart from "./UserActivityBarChart.jsx";
@@ -38,25 +39,26 @@ function MainComponent() {
 
                     //setDatasUserBase(await GetUserDatas(idParams))    
                     setDatasUserBase(returnedDatas)
+   
                     //console.log(returnedDatas)
 
                     GetUserActivity(idParams)
                     .then(returnedDatas => {
-                        setDatasActivity(returnedDatas);
+                        setDatasActivity(FormatUserActivity(returnedDatas));
                         //console.log(returnedDatas)
                     })
                     .catch(err =>console.log("pb api2", err))
         
                     GetUserAverageSessions(idParams)
                         .then(returnedDatas => {
-                            setDatasAverageSessions(returnedDatas) 
+                            setDatasAverageSessions(FormatAverageSessions(returnedDatas)) 
                             //console.log(returnedDatas)
                         })
                         .catch(err =>console.log("pb api3", err))
             
                     GetUserPerformance(idParams)
                         .then(returnedDatas => {
-                            setDatasUserPerformance(returnedDatas)
+                            setDatasUserPerformance(FormatUserPerformance(returnedDatas))
                             //console.log(returnedDatas)
                         })
                         .catch(function(err) {
