@@ -71,7 +71,7 @@ function MainComponent() {
                 console.log("pb api1", err)
                 setSstatReturnApi('pbApi')
             })
-    }, [idParams]); // idParams = tabelau de dépendances, pour préciser qu'on veut déclencher l'effet si idParams change
+    }, [idParams]); // idParams = tablau de dépendances, pour préciser qu'on veut déclencher l'effet si idParams change
 
     //console.log(datasAverageSessions)
 
