@@ -2,7 +2,7 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from  "./datas.js"
 
 const apisUrl = 'http://localhost:3000'
-const mokedDatas = false // if we want to use test datas or real datas api
+const mokedDatas = true // if we want to use test datas or real datas api
 console.log(`mokedDatas in 'GetUserDatas  : ${mokedDatas}`)
 
 /**
